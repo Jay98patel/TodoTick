@@ -1,0 +1,26 @@
+<div *ngIf="task">
+    <div class="accordion" *ngFor="let todoItems of task;" [id]="todoItems.id">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center" [id]="todoItems.id">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{todoItems.id}}" aria-expanded="true" aria-controls="{{todoItems.id}}">
+                        {{todoItems.title}}
+                    </button>
+                </h2>
+                <div class="d-flex">
+                    <a class="text-end text-primary mr-3" (click)="updateTodo(todoItems)">
+                        <div class="fas fa-edit w-100 "></div>
+                    </a>
+                    <a class="text-danger" (click)="deleteTodo(todoItems)">
+                        <div class="fas fa-trash"></div>
+                    </a>
+                </div>
+            </div>
+            <div [id]="todoItems.id" class="collapse show" aria-labelledby="{{todoItems.id}} " data-parent="#{{todoItems.id}}">
+                <div class="card-body">
+                    {{todoItems.taskDetail}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
