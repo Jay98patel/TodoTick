@@ -58,12 +58,14 @@ export class TodoFormComponent implements OnInit {
     if (this.updateTodo === false) {
       this.todoService.createTodo(this.newTodoForm.value).subscribe((createdSuccessfully) => {
         this.resetTodoForm();
+        console.log(createdSuccessfully)
       });
     }
     else {
       this.todoService.updateTodoList(this.newTodoForm.value).subscribe((updateTodo) => {
         this.resetTodoForm();
         this.updateTodo=false
+        console.log(updateTodo)
       });
     }
   }
