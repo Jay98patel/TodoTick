@@ -1,0 +1,12 @@
+<div class="container" *ngIf="usersList">
+    <ul class="list-group" *ngFor="let users of usersList">
+        <li class="list-group-item d-flex justify-content-between">
+            <div>
+                {{users.name}}
+            </div>
+            <div>
+                {{users.userName}}
+            </div>
+        </li>
+    </ul>
+</div>

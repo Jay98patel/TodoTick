@@ -14,6 +14,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadTodoApp(){
-    this.router.navigate(["/todo"])
+    this.router.navigate(["todo"])
+  }
+
+  loadLoggedInUsers(){
+    this.router.navigate(["users"])
   }
 }
