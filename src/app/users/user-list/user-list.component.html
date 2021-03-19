@@ -1,4 +1,5 @@
-<div class="container" *ngIf="usersList">
+<div class="container mt-3" *ngIf="usersList">
+    <h4>With Route Resolves</h4>
     <ul class="list-group" *ngFor="let users of usersList">
         <li class="list-group-item d-flex justify-content-between">
             <div>
@@ -6,6 +7,9 @@
             </div>
             <div>
                 {{users.userName}}
+            </div>
+            <div class="btn btn-light" [routerLink]="['../../todo',users.id,users.role]" [queryParams]="{allowAccess:users.role === 'admin' ? 1 : 0 }" [queryParamsHandling]="preserve">
+                Click Here To open Todo App
             </div>
         </li>
     </ul>

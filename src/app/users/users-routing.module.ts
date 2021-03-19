@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'userslist',
     component: UserListComponent,
     resolve: { userList: UsersResolver }
-  }
+  },
 ];
 
 @NgModule({
