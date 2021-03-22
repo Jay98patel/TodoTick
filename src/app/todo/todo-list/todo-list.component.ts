@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { Todo } from '../todo.model';
 
@@ -15,15 +15,15 @@ import { Todo } from '../todo.model';
 export class TodoListComponent implements OnInit {
   @Output() todoFormEdit = new EventEmitter<Todo>();
   @Input() task: Todo;
-
-  constructor(private todoService: TodoService) {}
+  isDetailShown = false;
+  constructor(private todoService: TodoService,private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
   }
 
   updateTodo(todo:Todo) {
     this.todoFormEdit.emit(todo);
-    console.log(todo)
+    this.cd.detectChanges();
   }
 
   deleteTodo(todo:Todo) {

@@ -19,8 +19,8 @@ export class TodoFormComponent implements OnInit {
   newTodo: Todo;
   todoFormData: Todo;
   newId: number;
-  todoToEdit: Todo;
-  updateTodo: Boolean = false
+  private todoToEdit: Todo;
+  updateTodo: boolean = false
 
   @Input()
   set todoEdit(todoValue: Todo) {
@@ -30,7 +30,7 @@ export class TodoFormComponent implements OnInit {
       this.newTodoForm.patchValue(todoValue);
     }
   }
-  get todoForm(): Todo {
+  get todoEdit(): Todo {
     return this.todoToEdit;
   }
 
@@ -43,29 +43,23 @@ export class TodoFormComponent implements OnInit {
 
   buildTodoForm() {
     return this.fb.group({
+      id:[''],
       title: [''],
       taskDetail: [''],
     });
   }
 
-  resetTodoForm() {    //no need
-    setTimeout(() => {
-      this.newTodoForm.reset();
-    }, 1000);
-  }
-
   submitTodo() {
-    if (this.updateTodo === false) {
+    if (!this.updateTodo) {
       this.todoService.createTodo(this.newTodoForm.value).subscribe((createdSuccessfully) => {
-        this.resetTodoForm();
-        console.log(createdSuccessfully)
+        this.newTodoForm.reset();
+        console.log("detailshas been saved with ",createdSuccessfully)
       });
     }
     else {
       this.todoService.updateTodoList(this.newTodoForm.value).subscribe((updateTodo) => {
-        this.resetTodoForm();
-        this.updateTodo=false
-        console.log(updateTodo)
+        this.newTodoForm.reset();
+        console.log("detailshas been saved with ",updateTodo)
       });
     }
   }

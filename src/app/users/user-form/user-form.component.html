@@ -1,0 +1,34 @@
+<form [formGroup]="userForm" (ngSubmit)="submitUser()">
+    <div class="form-group">
+        <input type="text" class="form-control"  formControlName="firstName" placeholder="First Name">
+        <small *ngIf="!validateUserForm().firstName.invalid" class="form-text text-danger">
+            <span [hidden]="!validateUserForm().controls['firstName'].errors.required">
+                This field is required.
+              </span>
+        </small>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="userName" placeholder="User Name">
+    </div>
+    <select class="custom-select" formControlName="role">
+        <option selected>Select Your Role</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+    </select>
+    <div class="d-flex " formArrayName="workExpiriences">
+        <div class="w-100">
+            <div *ngFor="let workExp of workArrayControl() ; let i = index">
+                <div class="d-flex align-items-center" [formGroupName]="i">
+                    <input type="text" class="w-100 mt-3 form-control" formControlName="workExp"
+                    placeholder="Add Your Work Experience">
+                    <i class="ml-2 fas fa-trash-alt" (click)="removeWorkExpirence(i)"></i>
+                </div>
+            </div>
+        </div>
+        <i class="ml-3 mt-3 fas fa-plus-square" (click)="addWorkExpirence()"></i>
+    </div>
+    <div class="form-group mt-3">
+        <input type="date" class="form-control" formControlName="userDate">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

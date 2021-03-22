@@ -2,33 +2,64 @@
   "todo": [
     {
       "id": 1,
-      "title": "Task one",
-      "taskDetail": "wake up at 6am"
+      "title": "Task on 6",
+      "taskDetail": "wake up at 6pm"
+    },
+    {
+      "title": "Task Four ",
+      "taskDetail": "dont wake up at 7am",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "title": "task 100",
+      "taskDetail": "get up and do push ups"
+    },
+    {
+      "id": 6,
+      "title": "task 14",
+      "taskDetail": "wake up at 2am"
+    },
+    {
+      "id": 7,
+      "title": "toas",
+      "taskDetail": "wake "
+    },
+    {
+      "id": 8,
+      "title": "jay",
+      "taskDetail": "patel"
+    },
+    {
+      "id": 9,
+      "title": "task2",
+      "taskDetail": "qwerty"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Sam",
+      "userName": "Sam_05",
+      "role": "admin"
     },
     {
       "id": 2,
-      "title": "Task two",
-      "taskDetail": "wake up at 6am"
+      "name": "Stark",
+      "userName": "its_starck",
+      "role": "employee"
     },
     {
       "id": 3,
-      "title": "Task three",
-      "taskDetail": "wake up at 6am"
+      "name": "jay",
+      "userName": "its_J10",
+      "role": "admin"
     },
     {
       "id": 4,
-      "title": "jay",
-      "todoDetail": "ja"
-    },
-    {
-      "id": 1615881005.954,
-      "title": "j",
-      "todoDetail": "y"
-    },
-    {
-      "id": 1615882426.737,
-      "title": "",
-      "todoDetail": ""
+      "name": "James",
+      "userName": "Jamy_8",
+      "role": "employee"
     }
   ]
 }

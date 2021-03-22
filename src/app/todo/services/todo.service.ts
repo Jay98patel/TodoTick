@@ -8,26 +8,24 @@ import { Todo } from '../todo.model';
 export class TodoService {
   private baseURL: string;
 
-  
-
   constructor(private http: HttpClient) {
     this.baseURL = environment.apiUrl;
   }
 
   getAllTodoList(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.baseURL);
+    return this.http.get<Todo[]>(this.baseURL +`/`+'todo');
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(this.baseURL, todo);
+    return this.http.post<Todo>(this.baseURL+`/`+'todo', todo);
   }
 
   updateTodoList(todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(this.baseURL + `/` + todo.id, todo);
+    return this.http.put<Todo>(this.baseURL +`/`+'todo'+ `/` + todo.id, todo);
   }
 
   deleteTodoItem(id: Number): Observable<Todo> {
-    return this.http.delete<Todo>(this.baseURL + `/` + id);
+    return this.http.delete<Todo>(this.baseURL+`/`+'todo' + `/` + id);
   }
 
 }
