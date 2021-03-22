@@ -10,8 +10,12 @@ import { User } from '../user.model';
 export class UsersResolver implements Resolve<User[]> {
   constructor(private userService: UserService) {
   }
-  
+
   resolve(): Observable<User[]> {
     return this.userService.getAllUsersList();
+    // //pipe(
+    //   map(res => res),
+    //   catchError(error => {
+    //     // do something with the error//
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user.model'
 /**
  * get the users list with route resolve
+ * give access to some users to TODO list
  */
 
 @Component({

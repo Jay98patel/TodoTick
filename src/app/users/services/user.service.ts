@@ -7,12 +7,13 @@ import { User } from '../user.model';
 @Injectable()
 export class UserService {
   private baseURL: string;
+  
   constructor(private http: HttpClient) {
     this.baseURL = environment.apiUrl;
   }
 
   getAllUsersList(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseURL+`/`+'users');
+    return this.http.get<User[]>(this.baseURL + `/` + 'users');
   }
 
 }
