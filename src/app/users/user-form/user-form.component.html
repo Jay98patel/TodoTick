@@ -1,28 +1,47 @@
 <form [formGroup]="userForm" (ngSubmit)="submitUser()">
     <div class="form-group">
-        <input type="text" class="form-control"  formControlName="firstName" placeholder="First Name">
-        <small *ngIf="!validateUserForm().firstName.invalid" class="form-text text-danger">
-            <span [hidden]="!validateUserForm().controls['firstName'].errors.required">
-                This field is required.
-              </span>
+        <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+        <small *ngIf="validateUserForm.firstName.touched && validateUserForm.firstName.errors "
+            class="form-text text-danger">
+            First Name field is required.
         </small>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" formControlName="userName" placeholder="User Name">
+        <small *ngIf="validateUserForm.userName.touched && validateUserForm.userName.errors "
+            class="form-text text-danger">
+            User Name field is required.
+        </small>
+        <small *ngIf="validateUserForm.userName.errors?.minlength" class="form-text text-danger">
+            Minmum length is 3
+        </small>
+        <small *ngIf="validateUserForm.userName.errors?.maxlength" class="form-text text-danger">
+            Maximum length is 5
+        </small>
+        <small *ngIf="validateUserForm.userName.errors?.pattern" class="form-text text-danger">
+            Use only LowerCase
+        </small>
     </div>
     <select class="custom-select" formControlName="role">
-        <option selected>Select Your Role</option>
+        <option value="0" disabled>Select Your Role</option>
         <option value="1">One</option>
         <option value="2">Two</option>
     </select>
+    <small *ngIf="validateUserForm.role.touched && validateUserForm.role.errors" class="form-text text-danger">
+        Role field is required.
+    </small>
     <div class="d-flex " formArrayName="workExpiriences">
         <div class="w-100">
-            <div *ngFor="let workExp of workArrayControl() ; let i = index">
+            <div *ngFor="let exp of workArrayControl() ; let i = index">
                 <div class="d-flex align-items-center" [formGroupName]="i">
                     <input type="text" class="w-100 mt-3 form-control" formControlName="workExp"
-                    placeholder="Add Your Work Experience">
-                    <i class="ml-2 fas fa-trash-alt" (click)="removeWorkExpirence(i)"></i>
+                        placeholder="Add Your Work Experience">
+                    <i class="ml-2 fas fa-trash-alt"  *ngIf="userForm.controls.workExpiriences.controls.length > 1"  (click)="removeWorkExpirence(i)"></i>
                 </div>
+                <small *ngIf="exp.controls.workExp.invalid" class="form-text text-danger">
+                    Work Exp. field is required.
+                </small>
+                {{exp.controls.workExp.invalid}}
             </div>
         </div>
         <i class="ml-3 mt-3 fas fa-plus-square" (click)="addWorkExpirence()"></i>

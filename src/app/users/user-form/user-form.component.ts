@@ -12,16 +12,16 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.buildUserForm()
-    console.log(this.userForm)
-    
+    console.log(this.workArrayControl())
   }
 
   buildUserForm() {
+    const lowerCase = "^[a-z_]*"
     return this.fb.group({
       id: [''],
       firstName: ['', Validators.required],
-      userName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(5)]],
-      role: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5),Validators.pattern(lowerCase)]],
+      role: ['0', Validators.required],
       workExpiriences: this.fb.array([
         this.initializeWorExp()
       ]),
@@ -29,8 +29,8 @@ export class UserFormComponent implements OnInit {
     });
   }
 
-  validateUserForm(){
-    return this.userForm.controls
+  get validateUserForm() {
+    return this.userForm.controls;
   }
 
   initializeWorExp() {
@@ -46,15 +46,13 @@ export class UserFormComponent implements OnInit {
   addWorkExpirence() {
     const control = <FormArray>this.userForm.controls["workExpiriences"];
     control.push(this.initializeWorExp());
+    console.log(this.workArrayControl().length);
   }
 
   removeWorkExpirence(i) {
     const control = <FormArray>this.userForm.controls["workExpiriences"];
     control.removeAt(i);
-  }
-
-  changeValue(){
-    console.log(this.userForm)
+    console.log(this.workArrayControl().length);
   }
 
   submitUser() {
