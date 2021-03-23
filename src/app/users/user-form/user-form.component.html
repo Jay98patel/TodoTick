@@ -1,24 +1,24 @@
-<form [formGroup]="userForm" (ngSubmit)="submitUser()">
+<form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="submitUser()">
     <div class="form-group">
         <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
-        <small *ngIf="validateUserForm.firstName.touched && validateUserForm.firstName.errors "
+        <small *ngIf=" validateUserForm.firstName.touched && validateUserForm.firstName.errors "
             class="form-text text-danger">
             First Name field is required.
         </small>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" formControlName="userName" placeholder="User Name">
-        <small *ngIf="validateUserForm.userName.touched && validateUserForm.userName.errors "
+        <small *ngIf=" validateUserForm.userName.touched && validateUserForm.userName.errors "
             class="form-text text-danger">
             User Name field is required.
         </small>
-        <small *ngIf="validateUserForm.userName.errors?.minlength" class="form-text text-danger">
+        <small *ngIf=" validateUserForm.userName.errors?.minlength" class="form-text text-danger">
             Minmum length is 3
         </small>
-        <small *ngIf="validateUserForm.userName.errors?.maxlength" class="form-text text-danger">
+        <small *ngIf=" validateUserForm.userName.errors?.maxlength" class="form-text text-danger">
             Maximum length is 5
         </small>
-        <small *ngIf="validateUserForm.userName.errors?.pattern" class="form-text text-danger">
+        <small *ngIf=" validateUserForm.userName.errors?.pattern" class="form-text text-danger">
             Use only LowerCase
         </small>
     </div>
@@ -27,7 +27,7 @@
         <option value="1">One</option>
         <option value="2">Two</option>
     </select>
-    <small *ngIf="validateUserForm.role.touched && validateUserForm.role.errors" class="form-text text-danger">
+    <small *ngIf=" validateUserForm.role.touched && validateUserForm.role.errors" class="form-text text-danger">
         Role field is required.
     </small>
     <div class="d-flex " formArrayName="workExpiriences">
@@ -36,18 +36,30 @@
                 <div class="d-flex align-items-center" [formGroupName]="i">
                     <input type="text" class="w-100 mt-3 form-control" formControlName="workExp"
                         placeholder="Add Your Work Experience">
-                    <i class="ml-2 fas fa-trash-alt"  *ngIf="userForm.controls.workExpiriences.controls.length > 1"  (click)="removeWorkExpirence(i)"></i>
+                    <i class="ml-2 fas fa-trash-alt" *ngIf="userForm.controls.workExpiriences.controls.length > 1"
+                        (click)="removeWorkExpirence(i)"></i>
                 </div>
-                <small *ngIf="exp.controls.workExp.invalid" class="form-text text-danger">
+                <small *ngIf=" exp.controls.workExp.invalid" class="form-text text-danger">
                     Work Exp. field is required.
                 </small>
-                {{exp.controls.workExp.invalid}}
             </div>
         </div>
         <i class="ml-3 mt-3 fas fa-plus-square" (click)="addWorkExpirence()"></i>
     </div>
     <div class="form-group mt-3">
         <input type="date" class="form-control" formControlName="userDate">
+        <small *ngIf="validateUserForm.userDate.touched && validateUserForm.userDate.errors"
+            class="form-text text-danger">
+            Date is Required
+        </small>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div>
+        <input class="form-control" type="file" accept=".png, .jpg, .jpeg"  (change)="onImageChanged($event)" #profileImage>
+    </div>
+    <div class="ml-4 mt-3">
+        <input class="ml-3" type="checkbox" formControlName="acceptTerms" class="form-check-input" />
+        <label class="form-check-label">Accept Terms & Conditions</label>
+        <div *ngIf="validateUserForm.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs are required</div>
+    </div>
+    <button type="submit" class="w-25 mt-3 btn btn-primary">Submit</button>
 </form>
