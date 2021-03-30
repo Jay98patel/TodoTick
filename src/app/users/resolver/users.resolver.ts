@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { User } from '../user.model';
 
@@ -12,7 +13,10 @@ export class UsersResolver implements Resolve<User[]> {
   }
 
   resolve(): Observable<User[]> {
+
     return this.userService.getAllUsersList();
+
+   
     // //pipe(
     //   map(res => res),
     //   catchError(error => {

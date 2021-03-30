@@ -8,6 +8,8 @@ import { TodoService } from './todo/services/todo.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { customNotifierOptions } from './shared Folder/notifier';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

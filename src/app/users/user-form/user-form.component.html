@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
         <input type="text" class="form-control" formControlName="userName" placeholder="User Name">
-        <small *ngIf=" validateUserForm.userName.touched && validateUserForm.userName.errors "
+        <small *ngIf=" validateUserForm.userName.touched && validateUserForm.userName.errors?.required "
             class="form-text text-danger">
             User Name field is required.
         </small>
@@ -22,26 +22,34 @@
             Use only LowerCase
         </small>
     </div>
-    <select class="custom-select" formControlName="role">
-        <option value="0" disabled>Select Your Role</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-    </select>
-    <small *ngIf=" validateUserForm.role.touched && validateUserForm.role.errors" class="form-text text-danger">
-        Role field is required.
-    </small>
-    <div class="d-flex " formArrayName="workExpiriences">
+    <div>
+        <select class="custom-select" formControlName="role">
+            <option *ngFor="let roles of role" [value]="roles.name" >{{roles.name}}</option>
+        </select>
+    </div>
+    <div class="d-flex mt-3">
+        <div class="form-check">
+            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio" value="fresher">
+            <label class="form-check-label" for="exampleRadios1">
+                Fresher
+            </label>
+        </div>
+        <div class="form-check ml-4">
+            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio" value="Expirenced">
+            <label class="form-check-label" for="exampleRadios1">
+                Expirenced
+            </label>
+        </div>
+    </div>
+    <div class="d-flex" formArrayName="workExpiriences">
         <div class="w-100">
             <div *ngFor="let exp of workArrayControl() ; let i = index">
                 <div class="d-flex align-items-center" [formGroupName]="i">
-                    <input type="text" class="w-100 mt-3 form-control" formControlName="workExp"
+                    <input  type="text" class="w-100 mt-3 form-control" formControlName="workExp"
                         placeholder="Add Your Work Experience">
-                    <i class="ml-2 fas fa-trash-alt" *ngIf="userForm.controls.workExpiriences.controls.length > 1"
-                        (click)="removeWorkExpirence(i)"></i>
+                    <i class="ml-2 fas fa-trash-alt" *ngIf="workArrayControl().length > 1"
+                         (click)="removeWorkExpirence(i)"></i>
                 </div>
-                <small *ngIf=" exp.controls.workExp.invalid" class="form-text text-danger">
-                    Work Exp. field is required.
-                </small>
             </div>
         </div>
         <i class="ml-3 mt-3 fas fa-plus-square" (click)="addWorkExpirence()"></i>
@@ -54,12 +62,18 @@
         </small>
     </div>
     <div>
-        <input class="form-control" type="file" accept=".png, .jpg, .jpeg"  (change)="onImageChanged($event)" #profileImage>
+        <select class="custom-select" formControlName="jobRole" multiple>
+            <option *ngFor="let jobRole of appliedFor" [value]="jobRole.name" >{{jobRole.name}}</option>
+        </select>
+    </div>
+    <div class="mt-3">
+        <input class="form-control" type="file" accept=".png, .jpg, .jpeg" (change)="onImageChanged($event)"
+            #profileImage>
     </div>
     <div class="ml-4 mt-3">
         <input class="ml-3" type="checkbox" formControlName="acceptTerms" class="form-check-input" />
         <label class="form-check-label">Accept Terms & Conditions</label>
         <div *ngIf="validateUserForm.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs are required</div>
     </div>
-    <button type="submit" class="w-25 mt-3 btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="userForm.invalid" class="w-25 mt-3 btn btn-primary">Submit</button>
 </form>
