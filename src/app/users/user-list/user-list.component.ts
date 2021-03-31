@@ -5,6 +5,7 @@ import { User } from '../user.model'
 /**
  * get the users list with route resolve
  * give access to some users to TODO list
+ * error handling
  */
 
 @Component({
@@ -16,9 +17,8 @@ export class UserListComponent implements OnInit {
   usersList: User[];
   isUser: Boolean = true;
   error: string;
-  notifier: NotifierService;
-  constructor(private route: ActivatedRoute, private router: Router,notifierService: NotifierService) { 
-    this.notifier = notifierService;
+  constructor(private route: ActivatedRoute, private router: Router,public notifierService: NotifierService) { 
+    this.notifierService = notifierService;
   }
 
   ngOnInit() {
@@ -29,11 +29,12 @@ export class UserListComponent implements OnInit {
     this.route.data.subscribe(
       (data: { userList: User[] }) => {
       this.usersList = data.userList;
+      this.notifierService.notify("User List","updated");
     },
     (error)=>{
       this.error = error;
       console.log("error in userlist")
-      this.notifier.notify("",this.error);
+      this.notifierService.notify("",this.error);
     });
   }
 

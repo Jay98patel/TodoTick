@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { keyValuePair, masterData } from '../masterData/masterData'
+import { Subscription } from 'rxjs';
+import { keyValuePair, masterData, Skills } from '../masterData/masterData'
 import { User } from '../user.model';
 @Component({
   selector: 'app-user-form',
@@ -14,7 +15,10 @@ export class UserFormComponent implements OnInit {
   disableWorkExpButton: boolean = false
   role: keyValuePair[];
   appliedFor: keyValuePair[];
-  userEdit: User
+  skill: Skills[];
+  newSkills:Skills[];
+  userEdit: User;
+  subscription: Subscription;
   @Output() saveUsers = new EventEmitter<User>();
 
   constructor(public fb: FormBuilder, public roles: masterData, private route: Router) {
@@ -24,15 +28,27 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.buildUserForm();
     this.role = this.roles.Role();
+    this.skill = this.roles.skill();
     this.appliedFor = this.roles.applyFor();
     if (this.userEdit == undefined) {
       this.loadUserValueEdit();
     }
     this.onChangeWorkExp();
+    //condition :- if age will greater then 18 ,pan is compulsory
+    const age = this.userForm.get('age') as FormControl;
+    const panNumber = this.userForm.get('panNumber') as FormControl;
+    this.subscription = age.valueChanges.subscribe((value) => {
+      if (value > 18) {
+        panNumber.setValidators([Validators.required]);
+      }
+      else {
+        panNumber.setValidators(null);
+      }
+      panNumber.updateValueAndValidity();
+    })
   }
 
   buildUserForm() {
-    
     const lowerCase = "^[a-z_1-9]*"; // allows lowercase and _
     return this.fb.group({
       id: [''],
@@ -43,11 +59,32 @@ export class UserFormComponent implements OnInit {
       workExpiriences: this.fb.array([
         this.initializeWorExp()
       ]),
-      jobRole: [''],
+      panNumber: [''],
+      skillList: this.fb.array([
+        this.initializeSkill()
+      ]),
+      age: ['', [Validators.required]],
+      jobRole: [0],
       acceptTerms: [false, Validators.required],
       userDate: ['', Validators.required],
-    });
+    })
   }
+
+  //testing
+  ageEligibility(age: string, role: string) {
+    return (formGroup: FormGroup) => {
+      const ageEligible = formGroup.controls[age]
+      if (ageEligible.value > 18) {
+        ageEligible.setErrors({ notEligible: true });
+        console.log(this.validateUserForm.age);
+      }
+      else {
+        ageEligible.setErrors({ notEligible: false });
+        console.log(role)
+      }
+    }
+  }
+  //testing
 
   get validateUserForm() {
     return this.userForm.controls;
@@ -58,9 +95,19 @@ export class UserFormComponent implements OnInit {
       workExp: [""],
     });
   }
+  initializeSkill() {
+    return this.fb.group({
+      skills: ['']
+    })
+  }
 
   workArrayControl() {
     return (this.userForm.get('workExpiriences') as FormArray).controls;
+  }
+
+  removeWorkExpirence(i) {
+    const control = <FormArray>this.userForm.controls["workExpiriences"];
+    control.removeAt(i);
   }
 
   addWorkExpirence() {
@@ -70,9 +117,37 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  removeWorkExpirence(i) {
-    const control = <FormArray>this.userForm.controls["workExpiriences"];
+  skillArrayControl() {
+    return (this.userForm.get('skillList') as FormArray).controls;
+  }
+
+  addNewskills(){
+    console.log(this.newSkills)
+  }
+
+  addskills() {
+    const control = <FormArray>this.userForm.controls["skillList"];
+    control.push(this.initializeSkill());
+  }
+
+  removeSkills(i,skills) {
+    const control = <FormArray>this.userForm.controls["skillList"];
+    let skillSelected = this.userForm.controls.skillList.value[i];
+    const sk = this.roles.skill().find(x => {
+      if (x.name == skillSelected.skills) {
+        return skills[x.id-1].disable=false
+      }
+    })
     control.removeAt(i);
+  }
+
+  changeSkillOption(index,skills) {
+    let skillSelected = this.userForm.controls.skillList.value[index];
+    const sk = this.roles.skill().find(x => {
+      if (x.name == skillSelected.skills) {
+        return skills[x.id-1].disable=true
+      }
+    })
   }
 
   onChangeWorkExp() {
@@ -90,8 +165,8 @@ export class UserFormComponent implements OnInit {
       })
       this.disableWorkExpButton = false
       console.log(this.workArrayControl())
-      // this.workArrayControl().splice(1, this.workArrayControl().length);
-      this.userForm.controls.workExpiriences.reset();
+      this.workArrayControl().splice(1, this.workArrayControl().length);
+      // this.userForm.controls.workExpiriences.reset();
     }
   }
 
@@ -104,17 +179,9 @@ export class UserFormComponent implements OnInit {
     this.userForm.patchValue(this.userEdit);
   }
 
-  onImageChanged(e) {
-    let imageReader = new FileReader();
-    let image = e.target.files[0];
-    if (e.target.files.length > 0) {
-      const file = e.target.files;
-      this.imageUpload = file;
-    }
-  }
-
   submitUser() {
-    this.saveUsers.emit(this.userForm.value)
-    //global error handler 
+    if (this.userForm.valid) {
+      this.saveUsers.emit(this.userForm.value)
+    }
   }
 }

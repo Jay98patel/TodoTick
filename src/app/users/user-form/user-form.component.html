@@ -1,4 +1,5 @@
 <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="submitUser()">
+    {{userForm.status}}
     <div class="form-group">
         <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
         <small *ngIf=" validateUserForm.firstName.touched && validateUserForm.firstName.errors "
@@ -24,31 +25,46 @@
     </div>
     <div>
         <select class="custom-select" formControlName="role">
-            <option *ngFor="let roles of role" [value]="roles.name" >{{roles.name}}</option>
+            <option *ngFor="let roles of role" [value]="roles.name">{{roles.name}}</option>
         </select>
     </div>
     <div class="d-flex mt-3">
         <div class="form-check">
-            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio" value="fresher">
+            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio"
+                value="fresher">
             <label class="form-check-label" for="exampleRadios1">
                 Fresher
             </label>
         </div>
         <div class="form-check ml-4">
-            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio" value="Expirenced">
+            <input class="form-check-input" (change)="onChangeWorkExp()" formControlName="status" type="radio"
+                value="Expirenced">
             <label class="form-check-label" for="exampleRadios1">
                 Expirenced
             </label>
         </div>
     </div>
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="age" placeholder="Enter Your Age">
+        <small class="form-text text-danger"
+            *ngIf="validateUserForm.age.touched && validateUserForm.age.errors?.required ">
+            Age is Required
+        </small>
+    </div>
+    <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="panNumber" placeholder="Enter Your Pan Card Number">
+        <small class="form-text text-danger" *ngIf="validateUserForm.panNumber.errors?.required ">
+            Please fill Pan card Number
+        </small>
+    </div>
     <div class="d-flex" formArrayName="workExpiriences">
         <div class="w-100">
             <div *ngFor="let exp of workArrayControl() ; let i = index">
                 <div class="d-flex align-items-center" [formGroupName]="i">
-                    <input  type="text" class="w-100 mt-3 form-control" formControlName="workExp"
+                    <input type="text" class="w-100 mt-3 form-control" formControlName="workExp"
                         placeholder="Add Your Work Experience">
                     <i class="ml-2 fas fa-trash-alt" *ngIf="workArrayControl().length > 1"
-                         (click)="removeWorkExpirence(i)"></i>
+                        (click)="removeWorkExpirence(i)"></i>
                 </div>
             </div>
         </div>
@@ -63,17 +79,30 @@
     </div>
     <div>
         <select class="custom-select" formControlName="jobRole" multiple>
-            <option *ngFor="let jobRole of appliedFor" [value]="jobRole.name" >{{jobRole.name}}</option>
+            <option *ngFor="let jobRole of appliedFor" [value]="jobRole.name">{{jobRole.name}}</option>
         </select>
+
     </div>
-    <div class="mt-3">
-        <input class="form-control" type="file" accept=".png, .jpg, .jpeg" (change)="onImageChanged($event)"
-            #profileImage>
+    <!-- <div class="d-flex mt-3">
+        <input type="text" class="form-control" placeholder="Add Your Skill" [(ngModel)]="newSkills" [ngModelOptions]="{standalone: true}">
+        <i class="ml-3 mt-3 fas fa-plus-square" (click)="addNewskills()"></i>
+    </div> -->
+    <div class="mt-3" formArrayName="skillList">
+        <div class="text-right">
+            <i class="ml-3 mt-3 fas fa-plus-square" (click)="addskills()"></i>
+        </div>
+        <div class="d-flex mt-2 align-items-center" *ngFor="let exp of skillArrayControl() ; let i = index" [formGroupName]="i">
+            <select class="custom-select" formControlName="skills" (change)="changeSkillOption(i,skill)">
+                <option *ngFor="let skills of skill" [disabled]="skills.disable" [value]="skills.name">{{skills.name}}
+                </option>
+            </select>
+            <i class="ml-2 fas fa-trash-alt" *ngIf="skillArrayControl().length > 1" (click)="removeSkills(i,skill)"></i>
+        </div>
     </div>
     <div class="ml-4 mt-3">
         <input class="ml-3" type="checkbox" formControlName="acceptTerms" class="form-check-input" />
         <label class="form-check-label">Accept Terms & Conditions</label>
         <div *ngIf="validateUserForm.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs are required</div>
     </div>
-    <button type="submit" [disabled]="userForm.invalid" class="w-25 mt-3 btn btn-primary">Submit</button>
+    <button type="submit" class="w-25 mt-3 btn btn-primary">Submit</button>
 </form>

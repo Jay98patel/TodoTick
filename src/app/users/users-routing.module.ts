@@ -9,6 +9,9 @@ const routes: Routes = [
     path:'',component:UsersComponent
   },
   {
+    path:'users',component:UsersComponent
+  },
+  {
     path: 'userslist',
     component: UserListComponent,
     resolve: { userList: UsersResolver }
