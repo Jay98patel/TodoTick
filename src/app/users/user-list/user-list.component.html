@@ -23,8 +23,7 @@
                 {{users.jobRole}}
             </td>
             <td class="fas fa-edit" (click)="editUserForm(users)"></td>
-            <td class="btn btn-light h-50 btn-size" [routerLink]="['../../todo',users.id,users.role]"
-                [queryParams]="{allowAccess:users.role =='Student' ? 1 : 0 }" [queryParamsHandling]="preserve">
+            <td class="btn btn-light h-50 btn-size" [routerLink]="['../../todo',users.id,users.role]" [queryParams]="{allowAccess:users.role =='Student' ? 1 : 0 }" [queryParamsHandling]="preserve">
                 Click Here To open Todo App
             </td>
         </tr>

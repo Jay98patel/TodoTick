@@ -4,7 +4,7 @@
         <h3>Form</h3>
         <app-todo-form [todoEdit]="editTodo"></app-todo-form>
     </div>
-    <div class="col-6 text-center ">
+    <div class="col-6 text-center">
         <h3>Todo List</h3>
         <app-todo-list [task]="todoLists" (todoFormEdit)="updateTodo($event)"></app-todo-list>
     </div>

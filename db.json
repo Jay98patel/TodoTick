@@ -1,105 +1,104 @@
 {
-  "todo": [
-    {
-      "id": 1,
-      "title": "Task on 6",
-      "taskDetail": "wake up at 6pm"
-    },
-    {
-      "title": "Task Four ",
-      "taskDetail": "dont wake up at 7am",
-      "id": 4
-    },
-    {
-      "id": 5,
-      "title": "task 100",
-      "taskDetail": "get up and do push ups"
-    },
-    {
-      "id": 6,
-      "title": "task 14",
-      "taskDetail": "wake up at 2am"
-    },
-    {
-      "id": 7,
-      "title": "toas",
-      "taskDetail": "wake "
-    },
-    {
-      "id": 8,
-      "title": "jay",
-      "taskDetail": "patel"
-    },
-    {
-      "id": 9,
-      "title": "task2",
-      "taskDetail": "qwerty"
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "firstName": "Jay",
-      "userName": "itsjten",
-      "role": "Student",
-      "status": "Expirenced",
-      "workExpiriences": [
-        {
-          "workExp": "google"
+    "todo": [{
+            "id": 1,
+            "title": "Task on 6",
+            "taskDetail": "wake up at 6pm"
         },
         {
-          "workExp": "tcs"
+            "title": "Task Four ",
+            "taskDetail": "dont wake up at 7am",
+            "id": 4
+        },
+        {
+            "id": 5,
+            "title": "task 100",
+            "taskDetail": "get up and do push ups"
+        },
+        {
+            "id": 6,
+            "title": "task 14",
+            "taskDetail": "wake up at 2am"
+        },
+        {
+            "id": 7,
+            "title": "toas",
+            "taskDetail": "wake "
+        },
+        {
+            "id": 8,
+            "title": "jay",
+            "taskDetail": "patel"
+        },
+        {
+            "id": 9,
+            "title": "task2",
+            "taskDetail": "qwerty"
         }
-      ],
-      "jobRole": [
-        "Software developer",
-        "Tester",
-        "Technical Support"
-      ],
-      "acceptTerms": true,
-      "userDate": "2021-03-31"
-    },
-    {
-      "id": 2,
-      "firstName": "j10",
-      "userName": "itjj",
-      "role": "Student",
-      "status": "fresher",
-      "jobRole": [
-        "Software developer",
-        "Tester"
-      ],
-      "acceptTerms": true,
-      "userDate": "2021-03-18"
-    },
-    {
-      "id": 3,
-      "firstName": "ay",
-      "userName": "pateh",
-      "role": "Employee",
-      "status": "Expirenced",
-      "workExpiriences": [
-        {
-          "workExp": "jay"
+    ],
+    "users": [{
+            "id": 1,
+            "firstName": "Jay",
+            "userName": "itsjten",
+            "role": "Student",
+            "count": 11,
+            "status": "Expirenced",
+            "workExpiriences": [{
+                    "workExp": "google"
+                },
+                {
+                    "workExp": "tcs"
+                }
+            ],
+            "jobRole": [
+                "Software developer",
+                "Tester",
+                "Technical Support"
+            ],
+            "acceptTerms": true,
+            "userDate": "2021-03-31"
         },
         {
-          "workExp": "patel"
+            "id": 2,
+            "firstName": "j10",
+            "userName": "itjj",
+            "role": "Student",
+            "count": 10,
+            "status": "fresher",
+            "jobRole": [
+                "Software developer",
+                "Tester"
+            ],
+            "acceptTerms": true,
+            "userDate": "2021-03-18"
         },
         {
-          "workExp": "hqwert"
-        },
-        {
-          "workExp": "sagdxu"
+            "id": 3,
+            "firstName": "ay",
+            "userName": "pateh",
+            "role": "Employee",
+            "count": 9,
+            "status": "Expirenced",
+            "workExpiriences": [{
+                    "workExp": "jay"
+                },
+                {
+                    "workExp": "patel"
+                },
+                {
+                    "workExp": "hqwert"
+                },
+                {
+                    "workExp": "sagdxu"
+                }
+            ],
+            "jobRole": [
+                "Web Developer",
+                "Software developer",
+                "Tester",
+                "Technical Support"
+            ],
+            "acceptTerms": false,
+            "userDate": "2021-03-24"
         }
-      ],
-      "jobRole": [
-        "Web Developer",
-        "Software developer",
-        "Tester",
-        "Technical Support"
-      ],
-      "acceptTerms": false,
-      "userDate": "2021-03-24"
-    }
-  ]
+    ]
 }
