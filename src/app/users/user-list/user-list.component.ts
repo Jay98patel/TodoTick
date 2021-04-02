@@ -27,6 +27,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<User>;
   dataSourcePagination: UserDataSource;
   displayedColumns = ['id', 'firstName', 'userName', 'role', 'count', 'status'];
+  noRecordFound: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('input') input: ElementRef;
@@ -53,16 +54,19 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    fromEvent(this.input.nativeElement,'keyup')
-    .pipe(
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
         debounceTime(150),
         distinctUntilChanged(),
         tap(() => {
-            this.paginator.pageIndex = 0;
-            this.loadLessonsPage();
+          // this.noRecordFound = false,
+          this.paginator.pageIndex = 0;
+          this.loadLessonsPage();
         })
-    )
-    .subscribe();
+      )
+      .subscribe((err) => {
+        this.noRecordFound = true
+      });
 
     this.sort.sortChange.subscribe(
       () => this.paginator.pageIndex = 0);
