@@ -1,4 +1,42 @@
-<div class="mt-3" *ngIf="usersList">
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="Search" #input>
+    </mat-form-field>
+    <mat-table class=" mat-elevation-z8" [dataSource]="dataSourcePagination" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef>UserName</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.userName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.role}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="count">
+            <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let user">{{user.count}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.status}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="userDetails(row)"></mat-row>
+
+    </mat-table>
+    <mat-paginator [length]="user?.count" [pageSize]="3" [pageSizeOptions]="[3, 5, 10,100]"></mat-paginator>
+</div>
+
+<!-- <div class="mt-3" *ngIf="usersList">
     <h4>With Route Resolves</h4>
     <table class="list-group border-aqua text-center" *ngFor="let users of usersList">
         <tr class="list-group-item d-flex justify-content-between">
@@ -28,4 +66,4 @@
             </td>
         </tr>
     </table>
-</div>
+</div> -->

@@ -10,4 +10,5 @@ export class User{
     jobRole:keyValuePair[];
     acceptTerms:boolean;
     userDate:string;
+    count:number;
 }
