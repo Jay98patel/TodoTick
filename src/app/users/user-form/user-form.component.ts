@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { keyValuePair, masterData, Skills } from '../masterData/masterData'
+import { keyValuePair, masterData, Skills } from '../../shared/masterData/masterData'
 import { User } from '../user.model';
 @Component({
   selector: 'app-user-form',

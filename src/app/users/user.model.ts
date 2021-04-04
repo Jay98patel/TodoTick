@@ -1,4 +1,4 @@
-import { keyValuePair } from "./masterData/masterData";
+import { keyValuePair } from "../shared/masterData/masterData";
 
 export class User{
     id:number;

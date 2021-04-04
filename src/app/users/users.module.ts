@@ -9,7 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UsersResolver } from './resolver/users.resolver';
 import { UserFormComponent } from './user-form/user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { masterData } from './masterData/masterData';
+import { masterData } from '../shared/masterData/masterData';
 import { HttpErrorInterceptor } from './services/httpInterceptor';
 import { GlobalErrorHandlerService } from './services/global-error-handler.service';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';

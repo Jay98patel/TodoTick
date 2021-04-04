@@ -12,8 +12,8 @@ export interface Skills {
 export class masterData {
   role: keyValuePair[];
   appliedFor: keyValuePair[];
-  skills: Skills[]
-
+  skills: Skills[];
+  region:keyValuePair[];
   public Role() {
     this.role = [{ id: 1, name: "Student" }, { id: 2, name: "Employee" }];
     return this.role;
@@ -27,5 +27,10 @@ export class masterData {
   public skill() {
     this.skills = [{ id: 1, name: "HTML", disable: false }, { id: 2, name: "CSS", disable: false }, { id: 3, name: "JAVAScript", disable: false }, { id: 4, name: "JAVA", disable: false }];
     return this.skills;
+  }
+
+  public Region() {
+    this.region = [{ id: 1, name: "Valley" }, { id: 2, name: "Platues" },{ id: 3, name: "Mountain" },{ id:4, name: "LandForm" }];
+    return this.region;
   }
 }
