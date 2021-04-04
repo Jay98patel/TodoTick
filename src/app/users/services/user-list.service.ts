@@ -12,8 +12,8 @@ export class UserListService {
     this.baseURL = environment.apiUrl;
   }
 
-  fetchUser(q = '',  _order = 'asc', _page = 1, _limit = 10): Observable<User[]> {
-    return this.http.get<User[]>(this.baseURL + `/` + 'users', {
+  fetchUser(q = '',  _order = 'asc', _page = 0, _limit = 3): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseURL}` + `/` + `users`, {
       params: new HttpParams()
         // .set('id', id.toString())
         .set('q', q)

@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   },
+  ,
+  {
+    path: 'weather',
+    loadChildren: () => import('./weather/weather.module').then(m => m.WeatherModule)
+  },
   {
     path: 'todo/:id/:role', component: TodoComponent
   },

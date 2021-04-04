@@ -40,7 +40,7 @@
             "firstName": "Jay",
             "userName": "itsjten",
             "role": "Student",
-            "count": 11,
+            "count": 100,
             "status": "Expirenced",
             "workExpiriences": [{
                     "workExp": "google"
@@ -49,11 +49,7 @@
                     "workExp": "tcs"
                 }
             ],
-            "jobRole": [
-                "Software developer",
-                "Tester",
-                "Technical Support"
-            ],
+            "jobRole": ["Software developer", "Tester", "Technical Support"],
             "acceptTerms": true,
             "userDate": "2021-03-31"
         },
@@ -64,10 +60,7 @@
             "role": "Student",
             "count": 10,
             "status": "fresher",
-            "jobRole": [
-                "Software developer",
-                "Tester"
-            ],
+            "jobRole": ["Software developer", "Tester"],
             "acceptTerms": true,
             "userDate": "2021-03-18"
         },
@@ -360,64 +353,37 @@
             ],
             "acceptTerms": false,
             "userDate": "2021-03-24"
+        }
+    ],
+    "weather": [{
+            "id": 1,
+            "cityName": "valsad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 25,
+            "temparature": 30,
+            "humidity": 87,
+            "region": "Platues"
         },
         {
-            "id": 17,
-            "firstName": "hdf",
-            "userName": "lkjhg",
-            "role": "Employee",
-            "count": 9,
-            "status": "Expirenced",
-            "workExpiriences": [{
-                    "workExp": "jay"
-                },
-                {
-                    "workExp": "patel"
-                },
-                {
-                    "workExp": "hqwert"
-                },
-                {
-                    "workExp": "sagdxu"
-                }
-            ],
-            "jobRole": [
-                "Web Developer",
-                "Software developer",
-                "Tester",
-                "Technical Support"
-            ],
-            "acceptTerms": false,
-            "userDate": "2021-03-24"
+            "id": 2,
+            "cityName": "Vapi",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 20,
+            "temparature": 35,
+            "humidity": 90,
+            "region": "Ridge"
         },
         {
-            "id": 19,
-            "firstName": "hdf",
-            "userName": "lkjhg",
-            "role": "Employee",
-            "count": 9,
-            "status": "Expirenced",
-            "workExpiriences": [{
-                    "workExp": "jay"
-                },
-                {
-                    "workExp": "patel"
-                },
-                {
-                    "workExp": "hqwert"
-                },
-                {
-                    "workExp": "sagdxu"
-                }
-            ],
-            "jobRole": [
-                "Web Developer",
-                "Software developer",
-                "Tester",
-                "Technical Support"
-            ],
-            "acceptTerms": false,
-            "userDate": "2021-03-24"
+            "id": 3,
+            "cityName": "Bhilad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 15,
+            "temparature": 38,
+            "humidity": 87,
+            "region": "Valley"
         }
     ]
 }
