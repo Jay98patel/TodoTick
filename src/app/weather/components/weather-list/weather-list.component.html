@@ -1,1 +1,41 @@
-<p>weather-list works!</p>
+<mat-table class=" mat-elevation-z8" [dataSource]="weatherSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cityName">
+        <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.cityName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="State">
+        <mat-header-cell *matHeaderCellDef>UserName</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.State}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.country}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="windSpeed">
+        <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
+        <mat-cell class="description-cell" *matCellDef="let weather">{{weather.windSpeed}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="temparature">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.temparature}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="humidity">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.humidity}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="region">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.region}}</mat-cell>
+    </ng-container>
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell text-danger" colspan="4">No Record Found"</td>
+    </tr>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="userDetails(row)"></mat-row>
+
+</mat-table>
