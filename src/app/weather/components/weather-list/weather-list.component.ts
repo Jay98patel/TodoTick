@@ -15,6 +15,7 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
   weatherList: Weather[];
   weatherSource: WeatherDataSource;
   error: string;
+  searchText:string;
   displayedColumns = ['id', 'cityName', 'State', 'country', 'windSpeed', 'temparature', 'humidity', 'region'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -46,9 +47,15 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
       .subscribe();
   }
 
+  onSearchText(searchText){
+    this.searchText = searchText.target.value;
+    this.paginator.pageIndex=0
+    this.loadWeatherPage();
+  }
+
   loadWeatherPage() {
     this.weatherSource.loadWeather(
-      '',
+      this.searchText,
       'asc',
       this.paginator.pageIndex,
       this.paginator.pageSize);
