@@ -13,7 +13,7 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
   weather: Weather[];
   weatherSource: WeatherDataSource;
   error: string;
-  displayedColumns = ['id', 'cityName', 'State', 'country', 'windSpeed', 'temparature','humidity','region'];
+  displayedColumns = ['id', 'cityName', 'State', 'country', 'windSpeed', 'temparature', 'humidity', 'region'];
   constructor(private route: ActivatedRoute, private router: Router, private weatherService: WeatherService) { }
 
   ngOnInit() {

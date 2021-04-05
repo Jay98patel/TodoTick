@@ -13,7 +13,7 @@ export class UserListService {
   }
 
   fetchUser(q = '',  _order = 'asc', _page = 0, _limit = 3): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseURL}` + `/` + `users`, {
+    return this.http.get<User[]>(`${this.baseURL}/users`, {
       params: new HttpParams()
         // .set('id', id.toString())
         .set('q', q)
