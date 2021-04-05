@@ -384,6 +384,36 @@
             "temparature": 38,
             "humidity": 87,
             "region": "Valley"
+        },
+        {
+            "id": 4,
+            "cityName": "Bhilad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 15,
+            "temparature": 38,
+            "humidity": 87,
+            "region": "Valley"
+        },
+        {
+            "id": 5,
+            "cityName": "Bhilad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 15,
+            "temparature": 38,
+            "humidity": 87,
+            "region": "Valley"
+        },
+        {
+            "id": 6,
+            "cityName": "Bhilad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 15,
+            "temparature": 38,
+            "humidity": 87,
+            "region": "Valley"
         }
     ]
 }

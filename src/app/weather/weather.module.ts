@@ -6,6 +6,7 @@ import { WeatherComponent } from './weather.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
 import { WeatherService } from './services/weather.service';
+import { WeatherListResolver } from './resolver/weather-list.resolver';
 
 @NgModule({
   declarations: [WeatherComponent, WeatherListComponent],
@@ -14,6 +15,9 @@ import { WeatherService } from './services/weather.service';
     WeatherRoutingModule,
     AngularMaterialModule
   ],
-  providers:[WeatherService]
+  providers:[
+    WeatherService,
+    WeatherListResolver
+  ]
 })
 export class WeatherModule { }

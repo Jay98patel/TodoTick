@@ -30,7 +30,7 @@ export class WeatherDataSource implements DataSource<Weather> {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe(
-        users => this.weatherSubject.next(users)
+        weather => this.weatherSubject.next(weather)
       );
   }
 }
