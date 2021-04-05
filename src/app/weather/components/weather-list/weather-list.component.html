@@ -39,3 +39,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
 </mat-table>
+<mat-paginator [length]="weatherList?.length" [pageSize]="3" [pageSizeOptions]="[3, 5, 10,100]"></mat-paginator>
