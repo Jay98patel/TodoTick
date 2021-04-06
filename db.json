@@ -363,7 +363,8 @@
             "windSpeed": 25,
             "temparature": 30,
             "humidity": 87,
-            "region": "Platues"
+            "region": "Platues",
+            "regionFilter": "all"
         },
         {
             "id": 2,
@@ -373,7 +374,8 @@
             "windSpeed": 20,
             "temparature": 35,
             "humidity": 90,
-            "region": "Ridge"
+            "region": "Platues",
+            "regionFilter": "all"
         },
         {
             "id": 3,
@@ -383,37 +385,52 @@
             "windSpeed": 15,
             "temparature": 38,
             "humidity": 87,
-            "region": "Valley"
+            "region": "Valley",
+            "regionFilter": "all"
         },
         {
             "id": 4,
-            "cityName": "Bhilad",
-            "State": "Gujarat",
-            "country": "India",
-            "windSpeed": 15,
-            "temparature": 38,
+            "cityName": "Manhatton",
+            "State": "New York",
+            "country": "USA",
+            "windSpeed": 45,
+            "temparature": 3,
             "humidity": 87,
-            "region": "Valley"
+            "region": "Valley",
+            "regionFilter": "all"
         },
         {
             "id": 5,
-            "cityName": "Bhilad",
+            "cityName": "Pune",
             "State": "Gujarat",
             "country": "India",
-            "windSpeed": 15,
-            "temparature": 38,
+            "windSpeed": 5,
+            "temparature": 28,
             "humidity": 87,
-            "region": "Valley"
+            "region": "LandForm",
+            "regionFilter": "all"
         },
         {
             "id": 6,
-            "cityName": "Bhilad",
+            "cityName": "Malad",
+            "State": "Gujarat",
+            "country": "India",
+            "windSpeed": 15,
+            "temparature": 38,
+            "humidity": 97,
+            "region": "Mountain",
+            "regionFilter": "all"
+        },
+        {
+            "id": 7,
+            "cityName": "Borivali",
             "State": "Gujarat",
             "country": "India",
             "windSpeed": 15,
             "temparature": 38,
             "humidity": 87,
-            "region": "Valley"
+            "region": "LandForm",
+            "regionFilter": "all"
         }
     ]
 }

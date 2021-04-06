@@ -1,37 +1,48 @@
-<mat-form-field>
-    <input matInput placeholder="Search" (input)="onSearchText($event)" #input>
-</mat-form-field>
-<mat-table class=" mat-elevation-z8" [dataSource]="weatherSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
+<div class="d-flex align-items-center">
+    <mat-form-field>
+        <input matInput placeholder="Search" (input)="onSearchText($event)" #input>
+    </mat-form-field>
+    <mat-form-field class="ml-3">
+        <mat-label>Filter By Region</mat-label>
+        <mat-select (selectionChange)="selectedRegion($event)" [ngModel]="selectedRegion">
+            <mat-option disabled>Select a Region</mat-option>
+            <mat-option [value]="regionValue" *ngFor="let regionValue of region">{{ regionValue.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="fa fa-refresh" *ngIf="regionSelected.length>0" (click)="resetFilter()" aria-hidden="true"></div>
+</div>
+
+<mat-table class=" mat-elevation-z8" [dataSource]="weatherSource" matSort matSortActive="weatherList?.id" matSortDirection="asc" matSortDisableClear>
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.id}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="cityName">
-        <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>City Name</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.cityName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="State">
-        <mat-header-cell *matHeaderCellDef>UserName</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.State}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="country">
-        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.country}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="windSpeed">
-        <mat-header-cell *matHeaderCellDef>Count</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Wind Speed</mat-header-cell>
         <mat-cell class="description-cell" *matCellDef="let weather">{{weather.windSpeed}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="temparature">
-        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
-        <mat-cell *matCellDef="let weather">{{weather.temparature}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef>Temparature</mat-header-cell>
+        <mat-cell *matCellDef="let weather">{{weather.temparature}}C</mat-cell>
     </ng-container>
     <ng-container matColumnDef="humidity">
-        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Humidity</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.humidity}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="region">
-        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Region</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.region}}</mat-cell>
     </ng-container>
     <tr class="mat-row" *matNoDataRow>
@@ -42,4 +53,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
 </mat-table>
-<mat-paginator [length]="weatherList?.length" [pageSize]="3" [pageSizeOptions]="[3, 5, 10,100]"></mat-paginator>
+<mat-paginator [length]="weatherList?.length" [pageSize]="3" [pageSizeOptions]="[3, 5, 10, 100]"></mat-paginator>

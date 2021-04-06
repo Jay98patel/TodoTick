@@ -7,7 +7,7 @@ import { Weather } from '../model/weather.model';
 @Injectable()
 export class WeatherService {
   private baseURL: string;
-
+  
   constructor(private http: HttpClient) {
     this.baseURL = environment.apiUrl;
   }
@@ -16,15 +16,17 @@ export class WeatherService {
     return this.http.get<Weather[]>(`${this.baseURL}/weather`)
   }
 
-  fetchWeather(q = '',  _order = 'asc', _page = 0, _limit = 3): Observable<Weather[]> {
-    return this.http.get<Weather[]>(`${this.baseURL}/weather`, {
-      params: new HttpParams()
-        // .set('id', id.toString())
+  fetchWeather(_like:string, q = '',  _order = 'asc', _page = 0, _limit = 3): Observable<Weather[]> {
+    let params=new HttpParams()
+    if(_like){
+      params=params.set('region', _like)
+    }
+    return this.http.get<Weather[]>(`${this.baseURL}/weather/`, {
+      params: params
         .set('q', q)
         .set('_order', _order)
         .set('_page', _page.toString())
         .set('_limit', _limit.toString())
     });
   }
-
 }

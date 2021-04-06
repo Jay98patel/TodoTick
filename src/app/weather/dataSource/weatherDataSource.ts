@@ -8,7 +8,7 @@ export class WeatherDataSource implements DataSource<Weather> {
 
   private weatherSubject = new BehaviorSubject<Weather[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
-
+  public searchList: Weather[]
   public loader = this.loadingSubject.asObservable();
 
   constructor(private WeatherService: WeatherService) { }
@@ -17,20 +17,25 @@ export class WeatherDataSource implements DataSource<Weather> {
     return this.weatherSubject.asObservable();
   }
 
-  disconnect(): void {
+  disconnect() {
     this.weatherSubject.complete();
     this.loadingSubject.complete();
   }
 
-  loadWeather(q= '',_order = 'asc', _page = 0, _limit = 3) {
+  loadWeather(_like: string = '', q = '', _order = 'asc', _page = 0, _limit = 3) {
     this.loadingSubject.next(true);
-    this.WeatherService.fetchWeather(q, _order, _page+1, _limit)
+    this.WeatherService.fetchWeather(_like, q, _order, _page + 1, _limit)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe(
-        weather => this.weatherSubject.next(weather)
+        weather => {
+          this.weatherSubject.next(weather);
+          this.searchList = weather
+          console.log(this.searchList)
+        }
       );
   }
+
 }

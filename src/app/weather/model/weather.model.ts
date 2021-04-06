@@ -9,4 +9,5 @@ export class Weather{
     temparature:number;
     humidity:number;
     region:keyValuePair[];
+    regionFilter:string;
 }
