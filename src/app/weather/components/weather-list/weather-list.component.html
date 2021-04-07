@@ -1,18 +1,18 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center mt-3 ml-3">
     <mat-form-field>
         <input matInput placeholder="Search" (input)="onSearchText($event)" #input>
     </mat-form-field>
     <mat-form-field class="ml-3">
         <mat-label>Filter By Region</mat-label>
-        <mat-select (selectionChange)="selectedRegion($event)" [ngModel]="selectedRegion">
+        <mat-select (selectionChange)="selectedRegion($event)" multiple>
             <mat-option disabled>Select a Region</mat-option>
             <mat-option [value]="regionValue" *ngFor="let regionValue of region">{{ regionValue.name }}</mat-option>
         </mat-select>
     </mat-form-field>
-    <div class="fa fa-refresh" *ngIf="regionSelected.length>0" (click)="resetFilter()" aria-hidden="true"></div>
+    <!-- <div class="fa fa-refresh ml-2 text-success" *ngIf="regionSelected.length>0" (click)="resetFilter()" aria-hidden="true"></div> -->
 </div>
 
-<mat-table class=" mat-elevation-z8" [dataSource]="weatherSource" matSort matSortActive="weatherList?.id" matSortDirection="asc" matSortDisableClear>
+<mat-table class=" mat-elevation-z8" [dataSource]="weatherSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
         <mat-cell *matCellDef="let weather">{{weather.id}}</mat-cell>
