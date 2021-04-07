@@ -6,6 +6,8 @@ import { WeatherDataSource } from '../../dataSource/weatherDataSource';
 import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
 import { keyValuePair, masterData } from 'src/app/shared/masterData/masterData';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-weather-list',
@@ -15,14 +17,15 @@ import { keyValuePair, masterData } from 'src/app/shared/masterData/masterData';
 
 export class WeatherListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   weatherList: Weather[];
   weatherSource: WeatherDataSource;
   error: string;
   searchText: string = '';
-  regionSelected: string='';
+  regionSelected: string = '';
   region: keyValuePair[];
-  weatherListLength:number;
+  weatherListLength: number;
   displayedColumns = ['id', 'cityName', 'State', 'country', 'windSpeed', 'temparature', 'humidity', 'region'];
 
   constructor(private route: ActivatedRoute, private weatherService: WeatherService, public regions: masterData) { }
@@ -37,8 +40,8 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
       (weather: { weatherList: Weather[] }) => {
         this.weatherList = weather.weatherList;
         this.weatherSource = new WeatherDataSource(this.weatherService);
-        this.weatherSource.loadWeather('', '', 'asc', 0, 3);
-        this.weatherListLength=this.weatherList.length;
+        this.weatherSource.loadWeather('', '', '', 'asc', 0, 3);
+        this.weatherListLength = this.weatherList.length;
       },
       (error) => {
         this.error = error;
@@ -47,7 +50,8 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.paginator.page
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         tap(() => this.loadWeatherPage())
       )
@@ -56,39 +60,46 @@ export class WeatherListComponent implements OnInit, AfterViewInit {
 
   selectedRegion(region) {
     this.regionSelected = region.value.name;
-    console.log(this.regionSelected.length)
     this.paginator.pageIndex = 0;
     this.loadWeatherPage();
+    let result =this.weatherList.filter(x=>
+      {
+       let bunny:[]= region.value.forEach(
+          x2=>{
+           return x.region === x2.name
+          }
+        )
+        console.log(bunny)
+      })
+      console.log(result)
   }
 
-  resetFilter(){
+  resetFilter() {
     this.regionSelected = '';
-    this.weatherSource.loadWeather('', '', 'asc', 0, this.paginator.pageSize);
+    this.weatherSource.loadWeather('', '', 'asc', this.sort.active, 0, this.paginator.pageSize);
     console.log("Filter Reset")
   }
 
   onSearchText(searchText) {
     if (searchText.target.value === "") {
-      this.searchText =''
-      this.weatherSource.loadWeather('', '', 'asc', 0, this.paginator.pageSize);
-      this.weatherList.length =this.weatherListLength ;
+      this.searchText = ''
+      this.weatherSource.loadWeather('', '', 'asc', this.sort.active, 0, this.paginator.pageSize);
+      this.weatherList.length = this.weatherListLength;
     }
-    else{
+    else {
       this.searchText = searchText.target.value;
       this.paginator.pageIndex = 0;
       this.weatherList.length = this.weatherSource.searchList.length;
-      this.loadWeatherPage();  
+      this.loadWeatherPage();
     }
   }
 
   loadWeatherPage() {
-    // console.log("Index",this.paginator.pageIndex)
-    // console.log("Size",this.paginator.pageSize)
-
     this.weatherSource.loadWeather(
       this.regionSelected,
       this.searchText,
-      'asc',
+      this.sort.active,
+      this.sort.direction,
       this.paginator.pageIndex,
       this.paginator.pageSize);
   }

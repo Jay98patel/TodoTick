@@ -22,9 +22,9 @@ export class WeatherDataSource implements DataSource<Weather> {
     this.loadingSubject.complete();
   }
 
-  loadWeather(_like: string = '', q = '', _order = 'asc', _page = 0, _limit = 3) {
+  loadWeather(_like: string = '', q = '', _sort: string = '', _order = 'asc', _page = 0, _limit = 3) {
     this.loadingSubject.next(true);
-    this.WeatherService.fetchWeather(_like, q, _order, _page + 1, _limit)
+    this.WeatherService.fetchWeather(_like, q, _sort, _order, _page + 1, _limit)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
