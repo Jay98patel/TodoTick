@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./weather/weather.module').then(m => m.WeatherModule)
   },
   {
+    path: 'shipments',
+    loadChildren: () => import('./shipments/shipments.module').then(m => m.ShipmentsModule)
+  },
+  {
     path: 'todo/:id/:role', component: TodoComponent
   },
   { 
