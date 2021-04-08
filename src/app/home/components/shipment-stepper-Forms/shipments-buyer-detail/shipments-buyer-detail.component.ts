@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BuyerDetails } from 'src/app/home/shipment.model';
 
@@ -11,7 +11,8 @@ import { BuyerDetails } from 'src/app/home/shipment.model';
 export class ShipmentsBuyerDetailComponent implements OnInit {
 
   buyersDetail: FormGroup;
-  @Output() saveShipmentDetail = new EventEmitter<BuyerDetails>();
+  @Input() buyerDetail:BuyerDetails;
+  @Output() saveBuyerDetail = new EventEmitter<BuyerDetails>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -29,7 +30,8 @@ export class ShipmentsBuyerDetailComponent implements OnInit {
   }
 
   submitBuyer() {
-    this.saveShipmentDetail.emit(this.buyersDetail.value)
+    this.buyerDetail=this.buyersDetail.value;
+    this.saveBuyerDetail.emit(this.buyersDetail.value)
   }
 
 }

@@ -9,7 +9,7 @@ import { ShipmentsDetailComponent } from './components/shipment-stepper-Forms/sh
 import { ShipmentsSellerDetailComponent } from './components/shipment-stepper-Forms/shipments-seller-detail/shipments-seller-detail.component';
 import { ShipmentsBuyerDetailComponent } from './components/shipment-stepper-Forms/shipments-buyer-detail/shipments-buyer-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ShipmentsService } from '../home/services/shipments.service';
 
 @NgModule({
   declarations: [HomeComponent, ShipmentsFormComponent, ShipmentsDetailComponent, ShipmentsSellerDetailComponent, ShipmentsBuyerDetailComponent],
@@ -18,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeRoutingModule,
     ReactiveFormsModule,
     AngularMaterialModule
+  ],
+  providers:[
+    ShipmentsService
   ]
 })
 export class HomeModule { }

@@ -2,10 +2,15 @@
     <mat-step [editable]="true" [stepControl]="shipmentsDetail" label="Shipments Details">
         <app-shipments-detail [shipDetail]="shipmentsDetail" (saveShipmentDetail)="saveShipments($event)"></app-shipments-detail>
     </mat-step>
-    <mat-step [editable]="true" label="Buyers Details">
-        <app-shipments-buyer-detail (saveShipmentDetail)="saveShipments($event)"></app-shipments-buyer-detail>
+    <mat-step [editable]="true" [stepControl]="buyerDetail" label="Buyers Details">
+        <app-shipments-buyer-detail [buyerDetail]="buyerDetail" (saveBuyerDetail)="saveBuyer($event)"></app-shipments-buyer-detail>
     </mat-step>
-    <mat-step [editable]="true" label="Seller Details">
-        <app-shipments-seller-detail (saveShipmentDetail)="saveShipments($event)"></app-shipments-seller-detail>
+    <mat-step [editable]="true" [stepControl]="sellerDetail" label="Seller Details">
+        <app-shipments-seller-detail [userDetail]="sellerDetail" (saveSellerDetail)="saveSeller($event)"></app-shipments-seller-detail>
+    </mat-step>
+    <mat-step [editable]="true" label="Verify Your Detail">
+        <div>
+            <button mat-raised-button color="primary" (click)="submitShipments()" matStepperNext>Done</button>
+        </div>
     </mat-step>
 </mat-horizontal-stepper>
