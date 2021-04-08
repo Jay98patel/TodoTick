@@ -1,16 +1,21 @@
-<div class="container">
-    <div class="d-flex flex-column col-2">
-        <button class="btn btn-success mt-4" (click)="loadTodoApp()">
-            Go To TODO App
-        </button>
-        <button class="btn btn-warning mt-4" (click)="loadLoggedInUsers()">
-            Logged Users
-        </button>
-        <button class="btn btn-warning mt-4" routerLink="/weather">
-            Weather Report
-        </button>
-        <button class="btn btn-dark mt-4" routerLink="/shipments">
-            Shipments
-        </button>
+<div class="">
+    <div class="d-flex">
+        <div class="d-flex flex-column col-2">
+            <button class="btn btn-success mt-4" (click)="loadTodoApp()">
+                Go To TODO App
+            </button>
+            <button class="btn btn-warning mt-4" (click)="loadLoggedInUsers()">
+                Logged Users
+            </button>
+            <button class="btn btn-primary mt-4" routerLink="/weather">
+                Weather Report
+            </button>
+            <button class="btn btn-dark mt-4" routerLink="/shipments">
+                Shipments
+            </button>
+        </div>
+        <div class="w-100">
+            <app-shipments-form></app-shipments-form>
+        </div>
     </div>
 </div>

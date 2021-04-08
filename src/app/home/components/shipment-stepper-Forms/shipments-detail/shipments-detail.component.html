@@ -1,0 +1,19 @@
+<form class="shipmentsDetail" [formGroup]="shipmentsDetail">
+    <div class="d-flex flex-column">
+        <mat-form-field>
+            <input matInput formControlName="shipmentName" placeholder="Shipment Name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="invoiceNo" placeholder="Invoice No.">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="orderNo" placeholder="Order No.">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="trackingNo" placeholder="Tracking Number">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+    </div>
+</form>

@@ -3,13 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { ShipmentsFormComponent } from './components/shipments-form/shipments-form.component';
+import { ShipmentsDetailComponent } from './components/shipment-stepper-Forms/shipments-detail/shipments-detail.component';
+import { ShipmentsSellerDetailComponent } from './components/shipment-stepper-Forms/shipments-seller-detail/shipments-seller-detail.component';
+import { ShipmentsBuyerDetailComponent } from './components/shipment-stepper-Forms/shipments-buyer-detail/shipments-buyer-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ShipmentsFormComponent, ShipmentsDetailComponent, ShipmentsSellerDetailComponent, ShipmentsBuyerDetailComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule,
+    AngularMaterialModule
   ]
 })
 export class HomeModule { }
