@@ -1,19 +1,19 @@
 <form class="shipmentsDetail" [formGroup]="shipmentsDetail">
     <div class="d-flex flex-column">
         <mat-form-field>
-            <input matInput formControlName="shipmentName" placeholder="Shipment Name">
+            <input matInput type="text" formControlName="shipmentName" placeholder="Shipment Name">
         </mat-form-field>
         <mat-form-field>
-            <input matInput formControlName="invoiceNo" placeholder="Invoice No.">
+            <input matInput type="number" formControlName="invoiceNo" placeholder="Invoice No.">
         </mat-form-field>
         <mat-form-field>
-            <input matInput formControlName="orderNo" placeholder="Order No.">
+            <input matInput type="number" formControlName="orderNo" placeholder="Order No.">
         </mat-form-field>
         <mat-form-field>
-            <input matInput formControlName="trackingNo" placeholder="Tracking Number">
+            <input matInput type="number" formControlName="trackingNo" placeholder="Tracking Number">
         </mat-form-field>
         <div>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
+            <button mat-raised-button color="primary" (click)="submitShipments()" matStepperNext>Next</button>
         </div>
     </div>
 </form>

@@ -1,11 +1,11 @@
-<mat-horizontal-stepper enabled="false" #stepper>
-    <mat-step [editable]="true" label="Shipments Details">
-        <app-shipments-detail></app-shipments-detail>
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [editable]="true" [stepControl]="shipmentsDetail" label="Shipments Details">
+        <app-shipments-detail [shipDetail]="shipmentsDetail" (saveShipmentDetail)="saveShipments($event)"></app-shipments-detail>
     </mat-step>
     <mat-step [editable]="true" label="Buyers Details">
-        <app-shipments-buyer-detail></app-shipments-buyer-detail>
+        <app-shipments-buyer-detail (saveShipmentDetail)="saveShipments($event)"></app-shipments-buyer-detail>
     </mat-step>
     <mat-step [editable]="true" label="Seller Details">
-        <app-shipments-seller-detail></app-shipments-seller-detail>
+        <app-shipments-seller-detail (saveShipmentDetail)="saveShipments($event)"></app-shipments-seller-detail>
     </mat-step>
 </mat-horizontal-stepper>

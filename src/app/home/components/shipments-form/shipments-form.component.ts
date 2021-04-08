@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-shipments-form',
@@ -8,9 +8,24 @@ import { FormGroup } from '@angular/forms';
 })
 export class ShipmentsFormComponent implements OnInit {
   shipmentsDetail: FormGroup;
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.buildShipmentDetailForm();
+  }
+  
+  buildShipmentDetailForm(){
+    this.shipmentsDetail = this.fb.group({
+      shipmentName:[''],
+      invoiceNo:[''],
+      orderNo:[''],
+      trackingNo:['']
+    });
+  }
+
+  saveShipments(shipments){
+    this.shipmentsDetail.patchValue(shipments);
+    console.log(this.shipmentsDetail.value)
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SellerDetails } from 'src/app/home/shipment.model';
 
 @Component({
   selector: 'app-shipments-seller-detail',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shipments-seller-detail.component.scss']
 })
 export class ShipmentsSellerDetailComponent implements OnInit {
+  sellerDetail: FormGroup;
+  @Output() saveShipmentDetail = new EventEmitter<SellerDetails>();
+  
+  constructor(private fb: FormBuilder) { }
 
-  constructor() { }
+  ngOnInit() {
+   this.sellerDetail= this.buildShipmentsForm();
+  }
 
-  ngOnInit(): void {
+  buildShipmentsForm(){
+    return this.fb.group({
+      sellerName:[''],
+      sellerAddress:['',[Validators.maxLength(10)]],
+      sellerContact:['',[Validators.maxLength(12),Validators.minLength(12)]],
+      sellerCountry:['',[Validators.maxLength(6)]]
+    })
+  }
+
+  submitSeller(){
+    this.saveShipmentDetail.emit(this.sellerDetail.value)
   }
 
 }
