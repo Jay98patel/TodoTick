@@ -13,7 +13,7 @@
     </div>
     <div>
         <div class="d-flex">
-            <span class="ml-3 nav-item btn btn-success" routerLink="shipmentsDetail">
+            <span class="ml-3 nav-item btn btn-success" [routerLink]="['shipmentsDetail',{ queryParams: { id: id } }]">
         <a>Detail</a>
       </span>
             <span class="ml-3 nav-item btn btn-primary" routerLink="preview">

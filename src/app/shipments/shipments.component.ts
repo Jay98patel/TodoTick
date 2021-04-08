@@ -9,21 +9,22 @@ import { Todo } from '../todo/todo.model';
   styleUrls: ['./shipments.component.scss']
 })
 export class ShipmentsComponent implements OnInit {
-  todoList:Todo[]
-  constructor(private shipService: TodoService,private router:Router) { }
+  todoList: Todo[];
+  shipmentId: number;
+  constructor(private shipService: TodoService, private router: Router) { }
 
   ngOnInit() {
-    this.getTodos()
+    this.getTodos();
   }
 
   getTodos() {
     this.shipService.getAllTodoList().subscribe((todos) => {
-      this.todoList= todos;
+      this.todoList = todos;
     })
   }
 
-  loadShipmentsDetail(id:number){
-    this.router.navigate(['shipments/shipmentInfo'])
+  loadShipmentsDetail(id: number) {
+    this.router.navigate(['shipments/shipmentInfo'], { queryParams: { id: id } });
     console.log(id)
   }
 }

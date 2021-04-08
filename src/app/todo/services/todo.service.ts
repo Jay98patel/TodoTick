@@ -16,6 +16,10 @@ export class TodoService {
     return this.http.get<Todo[]>(this.baseURL +`/`+'todo');
   }
 
+  getShipmentsDetails(id):Observable<Todo>{
+    return this.http.get<Todo>(this.baseURL+`/`+'todo/'+id);
+  }
+
   createTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(this.baseURL+`/`+'todo', todo);
   }
