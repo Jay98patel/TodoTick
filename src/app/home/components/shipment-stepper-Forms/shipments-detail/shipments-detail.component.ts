@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ShipmentDetails } from 'src/app/home/shipment.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { keyValuePair } from 'src/app/shared/masterData/masterData';
 
 @Component({
   selector: 'app-shipments-detail',
@@ -8,30 +8,21 @@ import { ShipmentDetails } from 'src/app/home/shipment.model';
   styleUrls: ['./shipments-detail.component.scss']
 })
 export class ShipmentsDetailComponent implements OnInit {
-  shipmentsDetail: FormGroup;
-  @Input() shipDetail;
+  inStock: keyValuePair[] = [
+    { id: 1, name: "In Stock" },
+    { id: 2, name: "Out of Stock" },
+  ];
 
-  @Output() saveShipmentDetail = new EventEmitter<ShipmentDetails>();
-  constructor(private fb: FormBuilder) { }
+  trackingno: string;
+  @Input() shipDetail: FormGroup;
+
+  constructor() { }
 
   ngOnInit() {
-   this.shipmentsDetail= this.buildShipmentsForm();
+    console.log(this.shipDetail.controls.invoiceNo)
   }
 
-  buildShipmentsForm(){
-    return this.fb.group({
-      shipmentName:[''],
-      invoiceNo:['',[Validators.maxLength(10)]],
-      orderNo:['',[Validators.maxLength(12),Validators.minLength(12)]],
-      trackingNo:['',[Validators.maxLength(6)]]
-    })
+  shipmentControl() {
+    return this.shipDetail.controls;
   }
-
-  submitShipments(){
-    this.shipDetail=this.shipmentsDetail.value;
-    this.saveShipmentDetail.emit(this.shipDetail)
-  }
-
-
-
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SellerDetails } from 'src/app/home/shipment.model';
+import { keyValuePair, masterData } from 'src/app/shared/masterData/masterData';
 
 @Component({
   selector: 'app-shipments-seller-detail',
@@ -8,28 +9,17 @@ import { SellerDetails } from 'src/app/home/shipment.model';
   styleUrls: ['./shipments-seller-detail.component.scss']
 })
 export class ShipmentsSellerDetailComponent implements OnInit {
-  sellerDetail: FormGroup;
-  @Input() userDetail:SellerDetails
-  @Output() saveSellerDetail = new EventEmitter<SellerDetails>();
+  checkList:keyValuePair[];
 
-  constructor(private fb: FormBuilder) { }
+  @Input() userDetail:FormGroup;
+
+  constructor(public masterData: masterData) { }
 
   ngOnInit() {
-   this.sellerDetail= this.buildShipmentsForm();
+    this.checkList=this.masterData.CheckList();
   }
 
-  buildShipmentsForm(){
-    return this.fb.group({
-      sellerName:[''],
-      sellerAddress:['',[Validators.maxLength(10)]],
-      sellerContact:['',[Validators.maxLength(12),Validators.minLength(12)]],
-      sellerCountry:['',[Validators.maxLength(6)]]
-    })
+  shipmentControl() {
+    return this.userDetail.controls;
   }
-
-  submitSeller(){
-    this.userDetail=this.sellerDetail.value;
-    this.saveSellerDetail.emit(this.userDetail)
-  }
-
 }

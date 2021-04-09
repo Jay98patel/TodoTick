@@ -14,6 +14,10 @@ export class masterData {
   appliedFor: keyValuePair[];
   skills: Skills[];
   region:keyValuePair[];
+  buyers:keyValuePair[];
+  product:keyValuePair[];
+  checkList:keyValuePair[];
+
   public Role() {
     this.role = [{ id: 1, name: "Student" }, { id: 2, name: "Employee" }];
     return this.role;
@@ -32,5 +36,19 @@ export class masterData {
   public Region() {
     this.region = [{ id: 1, name: "Valley" }, { id: 2, name: "Platues" },{ id: 3, name: "Mountain" },{ id:4, name: "LandForm" }];
     return this.region;
+  }
+  public Buyers() {
+    this.buyers = [{ id: 1, name: "test2" }, { id: 2, name: "Jay" },{ id: 3, name: "PR" },{ id:4, name: "qwerty" }];
+    return this.buyers;
+  }
+
+  public Product() {
+    this.product = [{ id: 1, name: "Plasma" }, { id: 2, name: "LCD" },{ id: 3, name: "Smart TV" },{ id:4, name: "Android TV" }];
+    return this.product;
+  }
+
+  public CheckList() {
+    this.checkList = [{ id: 1, name: "Prepare Valuable" }, { id: 2, name: "Preview other Listings" },{ id: 3, name: "Discuss Clients gaols" },{ id:4, name: "Discuss Timing and pricing" }];
+    return this.checkList;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BuyerDetails } from 'src/app/home/shipment.model';
+import { keyValuePair, masterData } from 'src/app/shared/masterData/masterData';
 
 @Component({
   selector: 'app-shipments-buyer-detail',
@@ -9,29 +10,20 @@ import { BuyerDetails } from 'src/app/home/shipment.model';
 })
 
 export class ShipmentsBuyerDetailComponent implements OnInit {
+  buyer:keyValuePair[];
+  products:keyValuePair[];
 
-  buyersDetail: FormGroup;
-  @Input() buyerDetail:BuyerDetails;
-  @Output() saveBuyerDetail = new EventEmitter<BuyerDetails>();
+  @Input() buyerDetail:FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(public masterData: masterData) { }
 
   ngOnInit() {
-    this.buyersDetail = this.buildBuyersForm();
+    this.buyer=this.masterData.Buyers();
+    this.products=this.masterData.Product();
   }
 
-  buildBuyersForm() {
-    return this.fb.group({
-      buyersName: [''],
-      buyersAddress: [''],
-      buyersContact: ['', [Validators.maxLength(10), Validators.minLength(10)]],
-      buyerCountry: ['']
-    })
-  }
-
-  submitBuyer() {
-    this.buyerDetail=this.buyersDetail.value;
-    this.saveBuyerDetail.emit(this.buyersDetail.value)
+  buyerControl() {
+    return this.buyerDetail.controls;
   }
 
 }

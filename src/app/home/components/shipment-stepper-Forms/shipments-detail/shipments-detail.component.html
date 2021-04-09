@@ -1,19 +1,44 @@
-<form class="shipmentsDetail" [formGroup]="shipmentsDetail">
+<form class="shipmentsDetail" [formGroup]="shipDetail">
     <div class="d-flex flex-column">
         <mat-form-field>
             <input matInput type="text" formControlName="shipmentName" placeholder="Shipment Name">
         </mat-form-field>
+        <small *ngIf=" shipmentControl().shipmentName.touched &&  shipmentControl().shipmentName.errors " class="form-text text-danger">
+            First Name field is required.
+        </small>
         <mat-form-field>
             <input matInput type="number" formControlName="invoiceNo" placeholder="Invoice No.">
         </mat-form-field>
+        <small *ngIf="shipmentControl().invoiceNo.touched &&  shipmentControl().invoiceNo.errors" class="form-text text-danger">
+            Invoice field is required.
+        </small>
+        <small *ngIf="shipmentControl().invoiceNo.errors?.minlength" class="form-text text-danger">
+            Minmum length is 10
+        </small>
         <mat-form-field>
             <input matInput type="number" formControlName="orderNo" placeholder="Order No.">
         </mat-form-field>
+        <small *ngIf=" shipmentControl().orderNo.touched &&  shipmentControl().orderNo.errors " class="form-text text-danger">
+            Order No. is required.
+        </small>
         <mat-form-field>
-            <input matInput type="number" formControlName="trackingNo" placeholder="Tracking Number">
+            <input matInput type="text" formControlName="trackingNo" placeholder="Tracking Number">
         </mat-form-field>
+        <small *ngIf=" shipmentControl().trackingNo.touched &&  shipmentControl().trackingNo.errors " class="form-text text-danger">
+            Tracking Number is required.
+        </small>
+        <div class="d-flex">
+            <label>In Stock</label>
+            <mat-radio-group formControlName="stock">
+                <mat-radio-button class="ml-2" *ngFor="let stock of inStock" [value]="stock.name">{{stock.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <small *ngIf=" shipmentControl().stock.touched &&  shipmentControl().stock.errors " class="form-text text-danger">
+            stock Update is required.
+        </small>
         <div>
-            <button mat-raised-button color="primary" (click)="submitShipments()" matStepperNext>Next</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
     </div>
 </form>

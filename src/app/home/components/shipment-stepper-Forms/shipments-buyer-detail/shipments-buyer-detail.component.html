@@ -1,19 +1,51 @@
-<form class="shipmentsDetail" [formGroup]="buyersDetail">
+<form class="shipmentsDetail" [formGroup]="buyerDetail">
     <div class="d-flex flex-column">
         <mat-form-field>
-            <input matInput type="text" formControlName="buyersName" placeholder="Buyers Name">
+            <mat-label>Select Buyer Name</mat-label>
+            <mat-select formControlName="buyersName">
+                <mat-option disabled>Select</mat-option>
+                <mat-option [value]="buyer.name" *ngFor="let buyer of buyer">{{ buyer.name }}</mat-option>
+            </mat-select>
         </mat-form-field>
+        <small *ngIf=" buyerControl().buyersName.touched &&  buyerControl().buyersName.errors " class="form-text text-danger">
+            Buyers Name field is required.
+        </small>
         <mat-form-field>
             <input matInput type="text" formControlName="buyersAddress" placeholder="Address">
         </mat-form-field>
+        <small *ngIf=" buyerControl().buyersAddress.touched &&  buyerControl().buyersAddress.errors " class="form-text text-danger">
+            Address field is required.
+        </small>
         <mat-form-field>
             <input matInput type="number" formControlName="buyersContact" placeholder="Contact No.">
         </mat-form-field>
+        <small *ngIf=" buyerControl().buyersContact.touched &&  buyerControl().buyersContact.errors " class="form-text text-danger">
+            Contact No. is required.
+        </small>
         <mat-form-field>
             <input matInput type="text" formControlName="buyerCountry" placeholder="Country">
         </mat-form-field>
+        <small *ngIf=" buyerControl().buyerCountry.touched &&  buyerControl().buyerCountry.errors " class="form-text text-danger">
+            Country is required.
+        </small>
+        <mat-form-field>
+            <mat-label>Select Buyer Product</mat-label>
+            <mat-select formControlName="buyersProduct" multiple>
+                <mat-option disabled>Select</mat-option>
+                <mat-option [value]="product.name" *ngFor="let product of products">{{ product.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <small *ngIf=" buyerControl().buyersProduct.touched &&  buyerControl().buyersProduct.errors " class="form-text text-danger">
+            Buyer Product is required.
+        </small>
+        <div class="d-flex">
+            <label>
+                Active Seller
+            </label>
+            <mat-slide-toggle formControlName="buyerActive"></mat-slide-toggle>
+        </div>
         <div>
-            <button mat-raised-button color="primary" (click)="submitBuyer()" matStepperNext>Next</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
     </div>
 </form>

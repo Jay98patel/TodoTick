@@ -1,16 +1,20 @@
-<mat-horizontal-stepper linear #stepper>
-    <mat-step [editable]="true" [stepControl]="shipmentsDetail" label="Shipments Details">
-        <app-shipments-detail [shipDetail]="shipmentsDetail" (saveShipmentDetail)="saveShipments($event)"></app-shipments-detail>
+<mat-horizontal-stepper linear #stepper (selectionChange)="onChangeStep($event)">
+    <mat-step [stepControl]="newShipmentForm.get('step1')" label="Shipments Details">
+        <app-shipments-detail [shipDetail]="newShipmentForm.get('step1')">
+        </app-shipments-detail>
     </mat-step>
-    <mat-step [editable]="true" [stepControl]="buyerDetail" label="Buyers Details">
-        <app-shipments-buyer-detail [buyerDetail]="buyerDetail" (saveBuyerDetail)="saveBuyer($event)"></app-shipments-buyer-detail>
+    <mat-step [stepControl]="newShipmentForm.get('step2')" label="Buyers Details">
+        <app-shipments-buyer-detail [buyerDetail]="newShipmentForm.get('step2')">
+        </app-shipments-buyer-detail>
     </mat-step>
-    <mat-step [editable]="true" [stepControl]="sellerDetail" label="Seller Details">
-        <app-shipments-seller-detail [userDetail]="sellerDetail" (saveSellerDetail)="saveSeller($event)"></app-shipments-seller-detail>
+    <mat-step [stepControl]="newShipmentForm.get('step3')" label="Seller Details">
+        <app-shipments-seller-detail [userDetail]="newShipmentForm.get('step3')">
+        </app-shipments-seller-detail>
     </mat-step>
-    <mat-step [editable]="true" label="Verify Your Detail">
+    <mat-step label="Verify Your Detail">
         <div>
-            <button mat-raised-button color="primary" (click)="submitShipments()" matStepperNext>Done</button>
+            <mat-spinner *ngIf="loader"></mat-spinner>
+            <button mat-raised-button color="primary" (click)="submitShipments()">Done</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>

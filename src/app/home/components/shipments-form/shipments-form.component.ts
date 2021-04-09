@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { BuyerDetails, SellerDetails,ShipmentDetails, Shipments  } from '../../shipment.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BuyerDetails, SellerDetails, ShipmentDetails, Shipments } from '../../shipment.model';
 import { ShipmentsService } from '../../services/shipments.service'
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-shipments-form',
@@ -9,65 +10,55 @@ import { ShipmentsService } from '../../services/shipments.service'
   styleUrls: ['./shipments-form.component.scss']
 })
 export class ShipmentsFormComponent implements OnInit {
+  @ViewChild('stepper') stepper: MatStepper;
+
   shipmentsDetail: FormGroup;
   buyerDetail: FormGroup;
   sellerDetail: FormGroup;
-  shipments:Shipments;
+  shipments: Shipments;
+  loader: boolean = false;
 
-  constructor(private fb: FormBuilder,private shipmentsService:ShipmentsService) { }
+  newShipmentForm: FormGroup = this.fb.group({
+    step1: this.fb.group({
+      shipmentName: ['', Validators.required],
+      invoiceNo: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
+      orderNo: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(4)]],
+      trackingNo: ['', Validators.required],
+      stock: ['', Validators.required]
+    }),
+    step2: this.fb.group({
+      buyersName: ['', [Validators.required]],
+      buyersAddress: ['', [Validators.required]],
+      buyersContact: ['', [Validators.required,Validators.minLength(5)]],
+      buyerCountry: ['', [Validators.required]],
+      buyersProduct: ['', [Validators.required]],
+      buyerActive: [false],
+    }),
+    step3: this.fb.group({
+      sellerName: ['',[Validators.required]],
+      sellerAddress: ['',[Validators.required]],
+      sellerContact: ['',[Validators.required]],
+      sellerCountry: ['',[Validators.required]],
+      sellerDate:[''],
+      sellerCheckList:['']
+    })
+  });
+
+  constructor(private fb: FormBuilder, private shipmentsService: ShipmentsService) { }
 
   ngOnInit() {
-    this.buildShipmentDetailForm();
-    this.buildBuyerDetailForm();
-    this.buildSellerDetailForm();
   }
 
-  buildShipmentDetailForm() {
-    this.shipmentsDetail = this.fb.group({
-      shipmentName: [''],
-      invoiceNo: [''],
-      orderNo: [''],
-      trackingNo: ['']
-    });
-  }
-
-  buildBuyerDetailForm() {
-    this.buyerDetail = this.fb.group({
-      buyersName: [''],
-      buyersAddress: [''],
-      buyersContact: [''],
-      buyerCountry: ['']
-    })
-  }
-
-  buildSellerDetailForm() {
-    this.sellerDetail = this.fb.group({
-      sellerName: [''],
-      sellerAddress: [''],
-      sellerContact: [''],
-      sellerCountry: ['']
-    })
-  }
-
-  saveShipments(shipments: ShipmentDetails) {
-    this.shipmentsDetail.patchValue(shipments);
-  }
-
-  saveBuyer(buyers: BuyerDetails) {
-    this.buyerDetail.patchValue(buyers);
-  }
-
-  saveSeller(seller: SellerDetails) {
-    this.sellerDetail.patchValue(seller);
+  onChangeStep(e) {
+    console.log(e)
   }
 
   submitShipments() {
-    this.shipments={...this.buyerDetail.value,...this.shipmentsDetail.value,...this.sellerDetail.value};
-    this.shipmentsService.createShipments(this.shipments).subscribe((shipments)=>{
-      console.log("data hase been saved")
-      this.buyerDetail.reset();
-      this.shipmentsDetail.reset();
-      this.sellerDetail.reset();
+    this.loader = true;
+    this.shipmentsService.createShipments(this.newShipmentForm.value).subscribe((shipments) => {
+      this.loader = false;
+    }, (err) => {
+      this.loader = false;
     })
   }
 }
