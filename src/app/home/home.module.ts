@@ -11,9 +11,13 @@ import { ShipmentsBuyerDetailComponent } from './components/shipment-stepper-For
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShipmentsService } from '../home/services/shipments.service';
 import { masterData } from '../shared/masterData/masterData';
+import { ShipmentProductListComponent } from './components/shipment-product-list/shipment-product-list.component';
 
 @NgModule({
-  declarations: [HomeComponent, ShipmentsFormComponent, ShipmentsDetailComponent, ShipmentsSellerDetailComponent, ShipmentsBuyerDetailComponent],
+  declarations: [HomeComponent,
+     ShipmentsFormComponent, 
+     ShipmentsDetailComponent,
+      ShipmentsSellerDetailComponent, ShipmentsBuyerDetailComponent, ShipmentProductListComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

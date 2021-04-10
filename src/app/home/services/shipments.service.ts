@@ -15,4 +15,17 @@ export class ShipmentsService {
   createShipments(shipments: Shipments): Observable<Shipments> {
     return this.http.post<Shipments>(`${this.baseURL}/shipments`, shipments);
   }
+
+  getAllShipmentList(): Observable<Shipments[]> {
+    return this.http.get<Shipments[]>(`${this.baseURL}/shipments`);
+  }
+
+  getShipment(id):Observable<Shipments>{
+    return this.http.get<Shipments>(`${this.baseURL}/shipments` +`/${id}`);
+  }
+  
+  updateShipmentList(shipment: Shipments,id:number): Observable<Shipments> {
+    return this.http.put<Shipments>(`${this.baseURL}/shipments` +`/${id}`, shipment);
+  }
+
 }

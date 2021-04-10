@@ -18,6 +18,7 @@ export interface SellerDetails{
 }
 
 export interface Shipments{
+  id:number,
   shipmentName:string,
   invoiceNo:number,
   orderNo:number,

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BuyerDetails, SellerDetails, ShipmentDetails, Shipments } from '../../shipment.model';
 import { ShipmentsService } from '../../services/shipments.service'
 import { MatStepper } from '@angular/material/stepper';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-shipments-form',
@@ -11,7 +12,7 @@ import { MatStepper } from '@angular/material/stepper';
 })
 export class ShipmentsFormComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
-
+  id: number;
   shipmentsDetail: FormGroup;
   buyerDetail: FormGroup;
   sellerDetail: FormGroup;
@@ -29,24 +30,34 @@ export class ShipmentsFormComponent implements OnInit {
     step2: this.fb.group({
       buyersName: ['', [Validators.required]],
       buyersAddress: ['', [Validators.required]],
-      buyersContact: ['', [Validators.required,Validators.minLength(5)]],
+      buyersContact: ['', [Validators.required, Validators.minLength(5)]],
       buyerCountry: ['', [Validators.required]],
       buyersProduct: ['', [Validators.required]],
       buyerActive: [false],
     }),
     step3: this.fb.group({
-      sellerName: ['',[Validators.required]],
-      sellerAddress: ['',[Validators.required]],
-      sellerContact: ['',[Validators.required]],
-      sellerCountry: ['',[Validators.required]],
-      sellerDate:[''],
-      sellerCheckList:['']
+      sellerName: ['', [Validators.required]],
+      sellerAddress: ['', [Validators.required]],
+      sellerContact: ['', [Validators.required]],
+      sellerCountry: ['', [Validators.required]],
+      sellerDate: [''],
+      sellerCheckList: ['']
     })
   });
 
-  constructor(private fb: FormBuilder, private shipmentsService: ShipmentsService) { }
+  constructor(private fb: FormBuilder, private shipmentsService: ShipmentsService, private router: ActivatedRoute,private route:Router) { }
 
   ngOnInit() {
+    console.log(this.router.snapshot.params)
+    if (this.router.snapshot.params.id != undefined) {
+      this.id = this.router.snapshot.params.id;
+      this.shipmentsService.getShipment(this.id).subscribe((shipment: Shipments) => {
+        console.log(shipment)
+        this.newShipmentForm.patchValue(shipment)
+      }, (err) => {
+        console.log(err)
+      })
+    }
   }
 
   onChangeStep(e) {
@@ -54,11 +65,24 @@ export class ShipmentsFormComponent implements OnInit {
   }
 
   submitShipments() {
-    this.loader = true;
-    this.shipmentsService.createShipments(this.newShipmentForm.value).subscribe((shipments) => {
-      this.loader = false;
-    }, (err) => {
-      this.loader = false;
-    })
+    const loadShipmentList=this.route.navigate(['../shipmentList'])
+    if (this.id == undefined) {
+      this.loader = true;
+      this.shipmentsService.createShipments(this.newShipmentForm.value).subscribe((shipments) => {
+        this.loader = false;
+        loadShipmentList;
+      }, (err) => {
+        this.loader = false;
+      })
+    }
+    else {
+      this.shipmentsService.updateShipmentList(this.newShipmentForm.value,this.id).subscribe((shipments: Shipments) => {
+        this.loader = false;
+        loadShipmentList;
+      }, (err) => {
+        this.loader = false;
+      })
+      console.log("data is updated")
+    }
   }
 }

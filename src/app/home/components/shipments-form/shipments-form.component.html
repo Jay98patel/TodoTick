@@ -1,20 +1,26 @@
-<mat-horizontal-stepper linear #stepper (selectionChange)="onChangeStep($event)">
-    <mat-step [stepControl]="newShipmentForm.get('step1')" label="Shipments Details">
-        <app-shipments-detail [shipDetail]="newShipmentForm.get('step1')">
-        </app-shipments-detail>
-    </mat-step>
-    <mat-step [stepControl]="newShipmentForm.get('step2')" label="Buyers Details">
-        <app-shipments-buyer-detail [buyerDetail]="newShipmentForm.get('step2')">
-        </app-shipments-buyer-detail>
-    </mat-step>
-    <mat-step [stepControl]="newShipmentForm.get('step3')" label="Seller Details">
-        <app-shipments-seller-detail [userDetail]="newShipmentForm.get('step3')">
-        </app-shipments-seller-detail>
-    </mat-step>
-    <mat-step label="Verify Your Detail">
-        <div>
-            <mat-spinner *ngIf="loader"></mat-spinner>
-            <button mat-raised-button color="primary" (click)="submitShipments()">Done</button>
-        </div>
-    </mat-step>
-</mat-horizontal-stepper>
+<div>
+
+    <mat-horizontal-stepper linear #stepper (selectionChange)="onChangeStep($event)">
+        <mat-step [stepControl]="newShipmentForm.get('step1')" label="Shipments Details">
+            <app-shipments-detail [shipDetail]="newShipmentForm.get('step1')">
+            </app-shipments-detail>
+        </mat-step>
+        <mat-step [stepControl]="newShipmentForm.get('step2')" label="Buyers Details">
+            <app-shipments-buyer-detail [buyerDetail]="newShipmentForm.get('step2')">
+            </app-shipments-buyer-detail>
+        </mat-step>
+        <mat-step [stepControl]="newShipmentForm.get('step3')" label="Seller Details">
+            <app-shipments-seller-detail [userDetail]="newShipmentForm.get('step3')">
+            </app-shipments-seller-detail>
+        </mat-step>
+        <mat-step label="Verify Your Detail">
+            <div>
+                <mat-spinner *ngIf="loader"></mat-spinner>
+                <button mat-raised-button color="primary" (click)="submitShipments()">Done</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+    <div>
+        <button mat-raised-button *ngIf="id!=undefined" class="ml-4" color="danger" routerLink="/home">Cancel</button>
+    </div>
+</div>
