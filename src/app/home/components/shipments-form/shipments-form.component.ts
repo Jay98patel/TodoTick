@@ -48,14 +48,11 @@ export class ShipmentsFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private shipmentsService: ShipmentsService, private router: ActivatedRoute,private route:Router) { }
 
   ngOnInit() {
-    console.log(this.router.snapshot.params)
     if (this.router.snapshot.params.id != undefined) {
       this.id = this.router.snapshot.params.id;
       this.shipmentsService.getShipment(this.id).subscribe((shipment: Shipments) => {
-        console.log(shipment)
         this.newShipmentForm.patchValue(shipment)
       }, (err) => {
-        console.log(err)
       })
     }
   }
@@ -65,7 +62,7 @@ export class ShipmentsFormComponent implements OnInit {
   }
 
   submitShipments() {
-    const loadShipmentList=this.route.navigate(['../shipmentList'])
+    const loadShipmentList=this.route.navigate(['home/shipmentList'])
     if (this.id == undefined) {
       this.loader = true;
       this.shipmentsService.createShipments(this.newShipmentForm.value).subscribe((shipments) => {

@@ -1,5 +1,4 @@
 <div>
-
     <mat-horizontal-stepper linear #stepper (selectionChange)="onChangeStep($event)">
         <mat-step [stepControl]="newShipmentForm.get('step1')" label="Shipments Details">
             <app-shipments-detail [shipDetail]="newShipmentForm.get('step1')">
@@ -21,6 +20,6 @@
         </mat-step>
     </mat-horizontal-stepper>
     <div>
-        <button mat-raised-button *ngIf="id!=undefined" class="ml-4" color="danger" routerLink="/home">Cancel</button>
+        <button mat-raised-button *ngIf="id!=undefined" class="ml-4" color="warn" routerLink="/home">Cancel Editing</button>
     </div>
 </div>

@@ -34,6 +34,11 @@
       "id": 9,
       "title": "task2",
       "taskDetail": "qwerty"
+    },
+    {
+      "id": 10,
+      "title": "test8",
+      "taskDetail": "nothing but serious"
     }
   ],
   "users": [
@@ -458,7 +463,7 @@
     {
       "step1": {
         "shipmentName": "jay",
-        "invoiceNo": 123456789,
+        "invoiceNo": 0,
         "orderNo": 2345678,
         "trackingNo": "23456789",
         "stock": "In Stock"
@@ -473,7 +478,7 @@
           "Smart TV",
           "Android TV"
         ],
-        "buyerActive": true
+        "buyerActive": false
       },
       "step3": {
         "sellerName": "ad",
@@ -492,7 +497,7 @@
     {
       "step1": {
         "shipmentName": "jay patel",
-        "invoiceNo": 23456789,
+        "invoiceNo": 123456,
         "orderNo": 9876543,
         "trackingNo": "5678988",
         "stock": "Out of Stock"
@@ -506,7 +511,7 @@
           "LCD",
           "Smart TV"
         ],
-        "buyerActive": false
+        "buyerActive": true
       },
       "step3": {
         "sellerName": "ad",
@@ -516,7 +521,6 @@
         "sellerDate": "2021-04-20T18:30:00.000Z",
         "sellerCheckList": [
           "Prepare Valuable",
-          "Preview other Listings",
           "Discuss Timing and pricing"
         ]
       },
