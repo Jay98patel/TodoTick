@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Event Name</th>
+            <th scope="col">Event Location</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="eventList">
+        <tr *ngFor="let events of eventList;let i=index">
+            <th>{{events.id}}</th>
+            <td>{{events.eventName}}</td>
+            <td>{{events.eventLocation}}</td>
+            <td class="fa fa-pencil-square-o" (click)="editEvent(events)"></td>
+            <td class="fa fa-times" (click)="deleteEvent(i)"></td>
+        </tr>
+    </tbody>
+</table>

@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./shipments/shipments.module').then(m => m.ShipmentsModule)
   },
   {
+    path: 'event',
+    loadChildren: () => import('./events/event.module').then(m => m.EventModule)
+  },
+  {
     path: 'todo/:id/:role', component: TodoComponent
   },
   { 

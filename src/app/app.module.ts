@@ -11,12 +11,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NotifierModule } from 'angular-notifier';
 import { customNotifierOptions } from './shared Folder/notifier';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { EventFormComponent } from './events/components/event-form/event-form.component';
+import { EventListComponent } from './events/components/event-list/event-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
