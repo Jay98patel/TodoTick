@@ -20,8 +20,8 @@ export class TodoFormComponent implements OnInit {
   todoFormData: Todo;
   newId: number;
   private todoToEdit: Todo;
-  updateTodo: boolean = false
-
+  updateTodos: boolean = false
+/*not in used
   @Input()
   set todoEdit(todoValue: Todo) {
     if (todoValue) {
@@ -33,12 +33,18 @@ export class TodoFormComponent implements OnInit {
   get todoEdit(): Todo {
     return this.todoToEdit;
   }
-
+*/
   constructor(public fb: FormBuilder, public todoService: TodoService) {
   }
 
   ngOnInit() {
     this.newTodoForm = this.buildTodoForm();
+    this.todoService.updateTodo.subscribe((res)=>{
+      if(res){
+        this.updateTodos = true;
+        this.newTodoForm.patchValue(res);
+      }
+    })
   }
 
   buildTodoForm() {
@@ -50,7 +56,7 @@ export class TodoFormComponent implements OnInit {
   }
 
   submitTodo() {
-    if (!this.updateTodo) {
+    if (!this.updateTodos) {
       this.todoService.createTodo(this.newTodoForm.value).subscribe((createdSuccessfully) => {
         this.newTodoForm.reset();
         console.log("detailshas been saved with ",createdSuccessfully)
@@ -59,6 +65,8 @@ export class TodoFormComponent implements OnInit {
     else {
       this.todoService.updateTodoList(this.newTodoForm.value).subscribe((updateTodo) => {
         this.newTodoForm.reset();
+        this.todoService.updateTodoView(updateTodo)
+        this.updateTodos = false;
         console.log("detailshas been saved with ",updateTodo)
       });
     }

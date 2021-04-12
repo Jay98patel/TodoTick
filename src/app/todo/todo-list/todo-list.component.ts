@@ -13,17 +13,20 @@ import { Todo } from '../todo.model';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  @Output() todoFormEdit = new EventEmitter<Todo>();
   @Input() task: Todo;
   isDetailShown = false;
-  constructor(private todoService: TodoService,private cd: ChangeDetectorRef) {}
+
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {
+    this.todoService.updateTodo.subscribe((res)=>{
+      // this.task=res
+    })
   }
 
   updateTodo(todo:Todo) {
-    this.todoFormEdit.emit(todo);
-    this.cd.detectChanges();
+    console.log(todo);
+    this.todoService.updateTodo.next(todo)
   }
 
   deleteTodo(todo:Todo) {

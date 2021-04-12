@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { BehaviourSubjectService } from '../Services/behaviour-subject.service';
 import { TodoService } from './services/todo.service';
 import { Todo } from './todo.model';
 
@@ -14,13 +15,15 @@ import { Todo } from './todo.model';
   styleUrls: ['./todo.component.scss'],
 
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit , OnDestroy{
   todoLists: Todo[];
   editTodo: Todo;
-  allowUser: Boolean = false
-  constructor(private todoService: TodoService, private route: ActivatedRoute) { }
+  allowUser: Boolean = false;
+  
+  constructor(private todoService: TodoService, private route: ActivatedRoute,private behaviorService:BehaviourSubjectService) { }
 
   ngOnInit() {
+    this.behaviorService.exclusiveApp.next(true);
     this.route.queryParams.subscribe((role: Params) => {
       if(role.allowAccess=="1"){
         this.allowUser=true;
@@ -41,5 +44,9 @@ export class TodoComponent implements OnInit {
 
   updateTodo(editTodo:Todo) {
     this.editTodo = editTodo;
+  }
+
+  ngOnDestroy(){
+    this.behaviorService.exclusiveApp.next(false);
   }
 }

@@ -1,34 +1,14 @@
 {
   "todo": [
     {
-      "id": 1,
-      "title": "Task on 6",
-      "taskDetail": "wake up at 6pm"
-    },
-    {
-      "title": "Task Four ",
-      "taskDetail": "dont wake up at 7am",
-      "id": 4
-    },
-    {
-      "id": 5,
-      "title": "task 100",
-      "taskDetail": "get up and do push ups"
-    },
-    {
-      "id": 6,
-      "title": "task 14",
-      "taskDetail": "wake up at 2am"
-    },
-    {
       "id": 7,
-      "title": "toas",
-      "taskDetail": "wake "
+      "title": "toastt 32",
+      "taskDetail": "wake at 12"
     },
     {
       "id": 8,
-      "title": "jay",
-      "taskDetail": "patel"
+      "title": "Priya",
+      "taskDetail": "go bring laptop"
     },
     {
       "id": 9,
@@ -36,9 +16,14 @@
       "taskDetail": "qwerty"
     },
     {
-      "id": 10,
-      "title": "test8",
-      "taskDetail": "nothing but serious"
+      "id": 13,
+      "title": "sh",
+      "taskDetail": "hsh"
+    },
+    {
+      "id": 14,
+      "title": "jay",
+      "taskDetail": "patel"
     }
   ],
   "users": [
