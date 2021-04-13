@@ -13,7 +13,7 @@ export class PlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  playerToEdit(editPlayer) {
+  playerToEdit(editPlayer:Player) {
     this.editPlayer = editPlayer;
   }
 

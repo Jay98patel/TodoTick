@@ -29,7 +29,7 @@ export class PlayerFormComponent implements OnInit {
 
   constructor(public fb: FormBuilder, private playerService: PlayerService) { }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.playerForm = this.buildPlayerForm();
   }
 
@@ -41,20 +41,23 @@ export class PlayerFormComponent implements OnInit {
     });
   }
 
+  resetPlayerForm(){
+    this.playerForm.reset()
+    this.playerUpdateButton = false;
+  }
+
   savePlayer() {
     if (this.playerForm.valid) {
       this.playerService.addPlayer(this.playerForm.value);
-      this.playerForm.reset();
-      this.playerUpdateButton = false;
+      this.resetPlayerForm();
     }
   }
 
   updatePlayer() {
     if (this.playerForm.valid) {
-      let playerDetails={...this.playerToEdit,...this.playerForm.value}
+      let playerDetails:Player ={...this.playerToEdit,...this.playerForm.value}
       this.playerService.updatePlayer(playerDetails);
-      this.playerForm.reset();
-      this.playerUpdateButton = false;
+      this.resetPlayerForm();
     }
   }
 }
