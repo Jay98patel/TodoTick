@@ -14,10 +14,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [EventComponent,EventFormComponent,EventListComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     EventRoutingModule,
-    ReactiveFormsModule
   ],
-  providers:[EventService,
+  providers:[
+    EventService,
     AllEvents]
 })
 export class EventModule { }

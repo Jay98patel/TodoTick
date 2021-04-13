@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./shipments/shipments.module').then(m => m.ShipmentsModule)
   },
   {
+    path: 'yourTeam',
+    loadChildren: () => import('./player/player.module').then(m => m.PlayerModule)
+  },
+  {
     path: 'event',
     loadChildren: () => import('./events/event.module').then(m => m.EventModule)
   },
