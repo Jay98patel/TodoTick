@@ -7,11 +7,11 @@
         </tr>
     </thead>
     <tbody *ngIf="eventList">
-        <tr *ngFor="let events of eventList;let i=index">
-            <th>{{events.id}}</th>
-            <td>{{events.eventName}}</td>
-            <td>{{events.eventLocation}}</td>
-            <td class="fa fa-pencil-square-o" (click)="editEvent(events)"></td>
+        <tr *ngFor="let event of eventList;let i=index">
+            <th>{{event.id}}</th>
+            <td>{{event.eventName}}</td>
+            <td>{{event.eventLocation}}</td>
+            <td class="fa fa-pencil-square-o" (click)="editEvent(event)"></td>
             <td class="fa fa-times" (click)="deleteEvent(i)"></td>
         </tr>
     </tbody>

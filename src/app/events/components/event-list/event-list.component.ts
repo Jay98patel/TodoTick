@@ -9,7 +9,7 @@ import { Events } from '../../event.model'
 export class EventListComponent implements OnInit {
 
   eventList: Events[];
-  @Output() editEventItem = new EventEmitter();
+  @Output() editEventItem = new EventEmitter<Events>();
 
   constructor(private eventService: EventService) { }
 
@@ -17,16 +17,16 @@ export class EventListComponent implements OnInit {
     this.getAllEvents();
   }
 
-  editEvent(events){
-    this.editEventItem.emit(events)
+  editEvent(event){
+    this.editEventItem.emit(event);
   }
 
   getAllEvents() {
     this.eventList = this.eventService.getAllEvents();
   } 
 
-  deleteEvent(eventsIndex:number){
-    this.eventService.deleteEvent(eventsIndex);
+  deleteEvent(eventIndex:number){
+    this.eventService.deleteEvent(eventIndex);
   }
 
 }

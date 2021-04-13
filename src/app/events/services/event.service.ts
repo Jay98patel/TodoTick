@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Events } from '../event.model';
 import { AllEvents } from '../masterData/allEvents';
 
 @Injectable()
@@ -8,16 +9,15 @@ export class EventService {
   constructor(private allevents:AllEvents) { 
   }
 
-  getAllEvents(){
+  getAllEvents():Events[]{
     return this.allevents.events;
   }
 
-  addEvent(newEvent){
+  addEvent(newEvent:Events){
     return this.allevents.events.push(newEvent)
   }
 
-  deleteEvent(id){
-    return this.allevents.events.splice(id,1)
+  deleteEvent(eventIndex:number){
+    return this.allevents.events.splice(eventIndex,1)
   }
-  
 }

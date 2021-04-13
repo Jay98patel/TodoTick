@@ -7,14 +7,14 @@ import { Events } from './event.model';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
-  editEvent:Events;
+  editEvent: Events;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  eventToEdit(editEvent){
-    this.editEvent=editEvent;
+  
+  eventToEdit(editEvent) {
+    this.editEvent = editEvent;
   }
 }

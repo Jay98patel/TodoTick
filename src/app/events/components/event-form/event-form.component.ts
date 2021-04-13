@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Events } from '../../event.model';
 import { EventService } from '../../services/event.service';
 
@@ -10,14 +10,14 @@ import { EventService } from '../../services/event.service';
 })
 export class EventFormComponent implements OnInit {
   newEventForm: FormGroup;
-  eventToEdit:Events;
-  newEvent:Events;
+  eventToEdit: Events;
+  newEvent: Events;
 
   @Input()
-  set eventEdit(todoValue: Events) {
-    if (todoValue) {
-      this.eventToEdit = { ...todoValue };
-      this.newEventForm.patchValue(todoValue);
+  set eventEdit(eventValue: Events) {
+    if (eventValue) {
+      this.eventToEdit = { ...eventValue };
+      this.newEventForm.patchValue(eventValue);
     }
   }
   get eventEdit(): Events {
@@ -32,24 +32,28 @@ export class EventFormComponent implements OnInit {
 
   buildEventForm() {
     return this.fb.group({
-      eventName: [''],
-      eventLocation: [''],
+      eventName: ['', [Validators.required]],
+      eventLocation: ['', [Validators.required]],
     });
   }
 
   submitEvent() {
-    let eventFormData:Events=this.newEventForm.value;
-    if (this.eventToEdit) {
-      eventFormData={...this.eventToEdit,...eventFormData};
-      let index = this.eventService.getAllEvents().findIndex(item => item.id === this.eventToEdit.id);
-      if(index>=0){
-        this.eventService.getAllEvents()[index]=eventFormData;
+    const eventData = this.eventService.getAllEvents();
+    if (this.newEventForm.valid) {
+      let eventFormData: Events = this.newEventForm.value;
+      if (this.eventToEdit) {
+        eventFormData = { ...this.eventToEdit, ...eventFormData };
+        let index = eventData.findIndex(item => item.id === this.eventToEdit.id);
+        if (index >= 0) {
+          eventData[index] = eventFormData;
+          this.newEventForm.reset();
+        }
       }
-    }
-    else{
-      let eventNewData={...this.newEventForm.value,...{id:this.eventService.getAllEvents().length + 1}}
-      this.eventService.addEvent(eventNewData);
-      this.newEventForm.reset();
+      else {
+        let eventNewData = { ...this.newEventForm.value, ...{ id: eventData.length + 1 } }
+        this.eventService.addEvent(eventNewData);
+        this.newEventForm.reset();
+      }
     }
   }
 }

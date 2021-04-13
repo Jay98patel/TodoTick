@@ -2,12 +2,12 @@
   "todo": [
     {
       "id": 7,
-      "title": "toastt 32",
+      "title": "Todo",
       "taskDetail": "wake at 12"
     },
     {
       "id": 8,
-      "title": "Priya",
+      "title": "p100",
       "taskDetail": "go bring laptop"
     },
     {
@@ -485,7 +485,7 @@
         "invoiceNo": 123456,
         "orderNo": 9876543,
         "trackingNo": "5678988",
-        "stock": "Out of Stock"
+        "stock": "In Stock"
       },
       "step2": {
         "buyersName": "test2",

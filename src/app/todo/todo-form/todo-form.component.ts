@@ -58,16 +58,17 @@ export class TodoFormComponent implements OnInit {
   submitTodo() {
     if (!this.updateTodos) {
       this.todoService.createTodo(this.newTodoForm.value).subscribe((createdSuccessfully) => {
-        this.newTodoForm.reset();
         console.log("detailshas been saved with ",createdSuccessfully)
+        this.todoService.getAllTodoList();
+        this.newTodoForm.reset();
       });
     }
     else {
       this.todoService.updateTodoList(this.newTodoForm.value).subscribe((updateTodo) => {
-        this.newTodoForm.reset();
         this.todoService.updateTodoView(updateTodo)
+        this.todoService.getAllTodoList();
         this.updateTodos = false;
-        console.log("detailshas been saved with ",updateTodo)
+        this.newTodoForm.reset();
       });
     }
   }

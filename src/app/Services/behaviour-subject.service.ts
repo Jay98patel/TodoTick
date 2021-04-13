@@ -9,6 +9,4 @@ export class BehaviourSubjectService {
   exclusiveApp=new Subject<boolean>();
   
   constructor() { }
-
-
 }

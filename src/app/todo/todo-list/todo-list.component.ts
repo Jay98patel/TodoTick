@@ -14,14 +14,13 @@ import { Todo } from '../todo.model';
 })
 export class TodoListComponent implements OnInit {
   @Input() task: Todo;
+  newTask:object;
   isDetailShown = false;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
-    this.todoService.updateTodo.subscribe((res)=>{
-      // this.task=res
-    })
+   
   }
 
   updateTodo(todo:Todo) {
