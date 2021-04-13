@@ -1,4 +1,4 @@
 <div class="d-flex container w-100 justify-content-around">
-    <app-player-form [playerEdit]="editPlayer"></app-player-form>
-    <app-players-list class="ml-5" (playerToEdit)="playerToEdit($event)"></app-players-list>
+    <app-player-form [playerEdit]="editPlayer" (player)="savePlayer($event)" (editPlayer)="updatePlayer($event)"></app-player-form>
+    <app-players-list [playersList]="playersList" class="ml-5" (playerToEdit)="playerToEdit($event)"></app-players-list>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Player } from '../../model/palyer.model';
 import { PlayerService } from '../../services/player.service';
@@ -26,6 +26,8 @@ export class PlayerFormComponent implements OnInit {
   get playerEdit(): Player {
     return this.playerToEdit;
   }
+  @Output() player  = new EventEmitter<Player>();
+  @Output() editPlayer  = new EventEmitter<Player>();
 
   constructor(public fb: FormBuilder, private playerService: PlayerService) { }
 
@@ -42,21 +44,20 @@ export class PlayerFormComponent implements OnInit {
   }
 
   resetPlayerForm(){
-    this.playerForm.reset()
+    this.playerForm.reset();
     this.playerUpdateButton = false;
   }
 
   savePlayer() {
     if (this.playerForm.valid) {
-      this.playerService.addPlayer(this.playerForm.value);
+      this.player.emit(this.playerForm.value);
       this.resetPlayerForm();
     }
   }
 
   updatePlayer() {
     if (this.playerForm.valid) {
-      let playerDetails:Player ={...this.playerToEdit,...this.playerForm.value}
-      this.playerService.updatePlayer(playerDetails);
+      this.editPlayer.emit(this.playerForm.value);
       this.resetPlayerForm();
     }
   }

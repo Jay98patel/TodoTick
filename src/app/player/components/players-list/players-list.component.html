@@ -14,7 +14,7 @@
             <td>{{player.playerAge}}</td>
             <td>{{player.playerCity}}</td>
             <td class="fa fa-pencil-square-o" (click)="editPlayer(player)"></td>
-            <td class="fa fa-times" (click)="deletePlayer(playerIndex)"></td>
+            <td class="fa fa-times" (click)="deletePlayer(player.id)"></td>
         </tr>
     </tbody>
 </table>

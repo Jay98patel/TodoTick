@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from './model/palyer.model';
+import { PlayerService } from './services/player.service';
 
 @Component({
   selector: 'app-player',
@@ -8,13 +9,35 @@ import { Player } from './model/palyer.model';
 })
 export class PlayerComponent implements OnInit {
   editPlayer: Player;
-  constructor() { }
+  playersList:Player[];
+  playerID:number;
+
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
+    this.getPlayerList();
+  }
+
+  getPlayerList() {
+    this.playerService.getPlayers().subscribe((playersList: Player[]) => {
+      this.playersList = playersList;
+    },(err) =>{});
   }
 
   playerToEdit(editPlayer:Player) {
     this.editPlayer = editPlayer;
+    this.playerID=editPlayer.id;
   }
 
+  updatePlayer(player:Player){
+    this.playerService.updatePlayer(player,this.playerID).subscribe((player:Player)=>{
+      this.getPlayerList();
+    },(err)=>{});
+  }
+
+  savePlayer(player:Player){
+    this.playerService.addPlayer(player).subscribe((player:Player)=>{
+      this.getPlayerList();
+    },(err)=>{});
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Player } from '../../model/palyer.model';
 import { PlayerService } from '../../services/player.service';
 
@@ -9,25 +9,20 @@ import { PlayerService } from '../../services/player.service';
 })
 export class PlayersListComponent implements OnInit {
 
-  playersList:Player[];
-
+  @Input() playersList:Player[];
   @Output() playerToEdit = new EventEmitter<Player>();
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
-    this.getPlayerList();
+    
   }
 
-  getPlayerList(){
-    this.playersList= this.playerService.getPlayers();
-  }
-
-  editPlayer(player:Player){
+  editPlayer(player: Player) {
     this.playerToEdit.emit(player);
   }
 
-  deletePlayer(playerIndex:number){
-    this.playerService.deletePlayer(playerIndex);
+  deletePlayer(playerIndex: number) {
+    this.playerService.deletePlayer(playerIndex).subscribe((playerDeleter:Player)=>{},(err)=>{});
   }
 }
