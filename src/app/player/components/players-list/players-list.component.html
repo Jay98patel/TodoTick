@@ -1,7 +1,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th>Sr No.</th>
+            <th scope="col">Player ID</th>
             <th scope="col">Player Name</th>
             <th scope="col">Player Age</th>
             <th scope="col">Player City</th>
@@ -9,6 +10,7 @@
     </thead>
     <tbody *ngIf="playersList">
         <tr *ngFor="let player of playersList;let playerIndex=index">
+            <th>{{playerIndex+1}}</th>
             <th>{{player.id}}</th>
             <td>{{player.playerName}}</td>
             <td>{{player.playerAge}}</td>

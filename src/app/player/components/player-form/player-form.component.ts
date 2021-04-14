@@ -15,28 +15,24 @@ export class PlayerFormComponent implements OnInit {
   playerData: Player;
   playerUpdateButton: boolean = false;
 
-  @Input()
-  set playerEdit(playerValue: Player) {
-    if (playerValue) {
-      this.playerUpdateButton = true;
-      this.playerToEdit = { ...playerValue };
-      this.playerForm.patchValue(playerValue);
-    }
-  }
-  get playerEdit(): Player {
-    return this.playerToEdit;
-  }
   @Output() player  = new EventEmitter<Player>();
   @Output() editPlayer  = new EventEmitter<Player>();
 
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder,private playerService:PlayerService) { }
 
   ngOnInit():void {
     this.playerForm = this.buildPlayerForm();
+    this.playerService.playerSubject.subscribe((player:Player)=>{
+      if(player){
+        this.playerForm.patchValue(player);
+        this.playerUpdateButton = true;
+      }
+    });
   }
 
   buildPlayerForm(): FormGroup {
     return this.fb.group({
+      id:[''],
       playerName: ['', [Validators.required]],
       playerAge: ['', [Validators.required]],
       playerCity: ['', [Validators.required]],

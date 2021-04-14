@@ -10,7 +10,6 @@ import { PlayerService } from './services/player.service';
 export class PlayerComponent implements OnInit {
   editPlayer: Player;
   playersList:Player[];
-  playerID:number;
 
   constructor(private playerService: PlayerService) { }
 
@@ -24,13 +23,8 @@ export class PlayerComponent implements OnInit {
     },(err) =>{});
   }
 
-  playerToEdit(editPlayer:Player) {
-    this.editPlayer = editPlayer;
-    this.playerID=editPlayer.id;
-  }
-
   updatePlayer(player:Player){
-    this.playerService.updatePlayer(player,this.playerID).subscribe((player:Player)=>{
+    this.playerService.updatePlayer(player,player.id).subscribe((player:Player)=>{
       this.getPlayerList();
     },(err)=>{});
   }

@@ -10,7 +10,6 @@ import { PlayerService } from '../../services/player.service';
 export class PlayersListComponent implements OnInit {
 
   @Input() playersList:Player[];
-  @Output() playerToEdit = new EventEmitter<Player>();
   @Output() playerToDelete=new EventEmitter<number>();
 
   constructor(private playerService: PlayerService) {}
@@ -19,10 +18,11 @@ export class PlayersListComponent implements OnInit {
   }
 
   editPlayer(player: Player) {
-    this.playerToEdit.emit(player);
+    this.playerService.getPlayerDetail(player);
   }
 
   deletePlayer(playerIndex: number) {
     this.playerToDelete.emit(playerIndex);
   }
+  
 }

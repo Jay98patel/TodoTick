@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Team } from '../masterData/Players';
 import { Player } from '../model/player.model';
@@ -12,10 +12,10 @@ import { Player } from '../model/player.model';
 @Injectable()
 export class PlayerService {
   private baseURL: string;
-  player:Player[]=[];
-  playerSubject=new BehaviorSubject<Player[]>(this.player);
+  player:Player;
+  playerSubject=new Subject<Player>();
 
-  constructor(private playerList:Team,private http: HttpClient) { 
+  constructor(private http: HttpClient) { 
     this.baseURL = environment.apiUrl;
   }
 
@@ -33,5 +33,10 @@ export class PlayerService {
 
   deletePlayer(playerIndex:number){
     return this.http.delete<Player>(`${this.baseURL}/player/${playerIndex}`);
+  }
+
+  /*use of behaviour subject */
+  getPlayerDetail(player:Player){
+    this.playerSubject.next(player);
   }
 }

@@ -515,39 +515,33 @@
   "player": [
     {
       "id": 3,
-      "playerName": "Rishab",
+      "playerName": "Json Roy",
       "playerAge": 22,
       "playerCity": "Delhi"
     },
     {
-      "playerName": "Dhoni",
-      "playerAge": 3212,
-      "playerCity": "Jharkhand",
-      "id": 4
-    },
-    {
+      "id": 9,
       "playerName": "jay",
       "playerAge": 23,
-      "playerCity": "valsad",
-      "id": 5
-    },
-    {
-      "playerName": "john",
-      "playerAge": 34,
-      "playerCity": "tokyo largest city",
-      "id": 7
-    },
-    {
-      "playerName": "jay",
-      "playerAge": 23,
-      "playerCity": "valsadertr",
-      "id": 9
+      "playerCity": "valsad"
     },
     {
       "playerName": "test",
       "playerAge": 23,
       "playerCity": "city",
       "id": 10
+    },
+    {
+      "playerName": "Rishab",
+      "playerAge": 222,
+      "playerCity": "Delhi",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "playerName": "Jay",
+      "playerAge": 42,
+      "playerCity": "Valsad"
     }
   ]
 }
