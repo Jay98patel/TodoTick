@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Player } from '../../model/palyer.model';
+import { Player } from '../../model/player.model';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class PlayerFormComponent implements OnInit {
   @Output() player  = new EventEmitter<Player>();
   @Output() editPlayer  = new EventEmitter<Player>();
 
-  constructor(public fb: FormBuilder, private playerService: PlayerService) { }
+  constructor(public fb: FormBuilder) { }
 
   ngOnInit():void {
     this.playerForm = this.buildPlayerForm();

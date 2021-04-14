@@ -25,7 +25,7 @@ export class TodoListComponent implements OnInit {
 
   updateTodo(todo:Todo) {
     console.log(todo);
-    this.todoService.updateTodo.next(todo)
+    this.todoService.updateTodoView(todo);
   }
 
   deleteTodo(todo:Todo) {

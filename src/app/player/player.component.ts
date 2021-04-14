@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from './model/palyer.model';
+import { Player } from './model/player.model';
 import { PlayerService } from './services/player.service';
 
 @Component({
@@ -37,6 +37,12 @@ export class PlayerComponent implements OnInit {
 
   savePlayer(player:Player){
     this.playerService.addPlayer(player).subscribe((player:Player)=>{
+      this.getPlayerList();
+    },(err)=>{});
+  }
+
+  playerToDelete(playerId:number){
+    this.playerService.deletePlayer(playerId).subscribe((playerDelete:Player)=>{
       this.getPlayerList();
     },(err)=>{});
   }

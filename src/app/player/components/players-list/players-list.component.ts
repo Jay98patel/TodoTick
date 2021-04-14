@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Player } from '../../model/palyer.model';
+import { Player } from '../../model/player.model';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -11,11 +11,11 @@ export class PlayersListComponent implements OnInit {
 
   @Input() playersList:Player[];
   @Output() playerToEdit = new EventEmitter<Player>();
+  @Output() playerToDelete=new EventEmitter<number>();
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    
   }
 
   editPlayer(player: Player) {
@@ -23,6 +23,6 @@ export class PlayersListComponent implements OnInit {
   }
 
   deletePlayer(playerIndex: number) {
-    this.playerService.deletePlayer(playerIndex).subscribe((playerDeleter:Player)=>{},(err)=>{});
+    this.playerToDelete.emit(playerIndex);
   }
 }

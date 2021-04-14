@@ -1,4 +1,4 @@
-import { Player } from "../model/palyer.model";
+import { Player } from "../model/player.model";
 
 
 export class Team {

@@ -1,13 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Team } from '../masterData/Players';
-import { Player } from '../model/palyer.model';
+import { Player } from '../model/player.model';
+/**
+ * Json server Crud Methods
+ * 
+ */
 
 @Injectable()
 export class PlayerService {
   private baseURL: string;
+  player:Player[]=[];
+  playerSubject=new BehaviorSubject<Player[]>(this.player);
 
   constructor(private playerList:Team,private http: HttpClient) { 
     this.baseURL = environment.apiUrl;
@@ -29,7 +35,3 @@ export class PlayerService {
     return this.http.delete<Player>(`${this.baseURL}/player/${playerIndex}`);
   }
 }
-
-// return this.http.put<Player>(this.baseURL +`/`+'player'+ `/` + playerDetail.id, playerDetail);
-// const index = this.playerList.players.findIndex(player => playerDetail.id === player.id);
-// this.playerList.players[index] = playerDetail;
