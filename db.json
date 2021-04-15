@@ -515,7 +515,7 @@
   "player": [
     {
       "id": 3,
-      "playerName": "Json Roy",
+      "playerName": "Json Roy2",
       "playerAge": 22,
       "playerCity": "Delhi"
     },
@@ -542,6 +542,24 @@
       "playerName": "Jay",
       "playerAge": 42,
       "playerCity": "Valsad"
+    },
+    {
+      "id": 13,
+      "playerName": "james",
+      "playerAge": 26,
+      "playerCity": "walter"
+    },
+    {
+      "id": 14,
+      "playerName": "walter",
+      "playerAge": 26,
+      "playerCity": "disney"
+    },
+    {
+      "id": 15,
+      "playerName": "john",
+      "playerAge": 30,
+      "playerCity": "vetinam"
     }
   ]
 }

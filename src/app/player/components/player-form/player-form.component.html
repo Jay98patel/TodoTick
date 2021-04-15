@@ -11,7 +11,7 @@
         <label for="playercity">Player City</label>
         <input type="text" formControlName="playerCity" class="form-control" id="playercity" placeholder="Player City">
     </div>
-    <button type="submit" *ngIf="!playerUpdateButton" class="btn btn-primary">Submit</button>
-    <button type="submit" *ngIf="playerUpdateButton" class="btn btn-primary">Update</button>
+    <button type="submit" [loading]="loading" *ngIf="!playerUpdateButton" class="btn btn-primary">Submit</button>
+    <button type="submit" [loading]="loading" *ngIf="playerUpdateButton" class="btn btn-primary">Update</button>
     <button type="button" *ngIf="playerUpdateButton" class="btn btn-warning ml-2" (click)="resetPlayerForm()">Cancel</button>
 </form>

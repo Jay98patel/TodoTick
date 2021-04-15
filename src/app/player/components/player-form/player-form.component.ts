@@ -9,7 +9,7 @@ import { PlayerService } from '../../services/player.service';
   styleUrls: ['./player-form.component.scss']
 })
 export class PlayerFormComponent implements OnInit {
-
+  loading:boolean;
   playerForm: FormGroup;
   playerToEdit: Player;
   playerData: Player;
@@ -45,7 +45,9 @@ export class PlayerFormComponent implements OnInit {
   }
 
   savePlayer() {
+    console.log("click")
     if (this.playerForm.valid) {
+      this.showLoading()
       this.player.emit(this.playerForm.value);
       this.resetPlayerForm();
     }
@@ -56,5 +58,11 @@ export class PlayerFormComponent implements OnInit {
       this.editPlayer.emit(this.playerForm.value);
       this.resetPlayerForm();
     }
+  }
+  showLoading(){
+    this.loading=true;
+    setTimeout(()=>{
+      this.loading=false;
+    },2000)
   }
 }

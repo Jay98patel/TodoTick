@@ -1,0 +1,10 @@
+<div class="label">
+    <ng-content></ng-content>
+    <!-- dynamic label will placed here -->
+</div>
+<div class="loader">
+    <ng-container *ngTemplateOutlet="defaultLoader"></ng-container>
+</div>
+<ng-template #defaultLoader>
+    <span>Saving...</span>
+</ng-template>

@@ -8,6 +8,7 @@ import { PlayersListComponent } from './components/players-list/players-list.com
 import { PlayerService } from './services/player.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Team } from './masterData/Players';
+import { TodoTickButtonModule } from '../shared Module/todo-tick-button/todo-tick-button.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { Team } from './masterData/Players';
   imports: [
     CommonModule,
     PlayerRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TodoTickButtonModule
   ],
   providers: [
     PlayerService,
