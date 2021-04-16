@@ -1,0 +1,4 @@
+<div class="d-flex container w-100 justify-content-around">
+    <app-event-form [eventEdit]="editEvent"></app-event-form>
+    <app-event-list class="ml-5" (editEventItem)="eventToEdit($event)"></app-event-list>
+</div>

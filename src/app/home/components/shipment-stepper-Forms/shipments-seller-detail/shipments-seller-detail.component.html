@@ -1,0 +1,44 @@
+<form class="shipmentsDetail" [formGroup]="userDetail">
+    <div class="d-flex flex-column">
+        <mat-form-field>
+            <input matInput type="text" formControlName="sellerName" placeholder="Seller Name">
+        </mat-form-field>
+        <small *ngIf=" shipmentControl().sellerName.touched &&  shipmentControl().sellerName.errors " class="form-text text-danger">
+            Seller Name is required.
+        </small>
+        <mat-form-field>
+            <textarea matInput type="text" formControlName="sellerAddress" placeholder="Address"></textarea>
+        </mat-form-field>
+        <small *ngIf=" shipmentControl().sellerAddress.touched &&  shipmentControl().sellerAddress.errors " class="form-text text-danger">
+            Address is required.
+        </small>
+        <mat-form-field>
+            <input matInput type="number" maxlength="10" minlength="10" formControlName="sellerContact" placeholder="Contact No." #input>
+            <mat-hint>{{input.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+        <small *ngIf=" shipmentControl().sellerContact.touched &&  shipmentControl().sellerContact.errors " class="form-text text-danger">
+            Contact No. is required.
+        </small>
+        <mat-form-field>
+            <input matInput type="text" formControlName="sellerCountry" placeholder="Country">
+        </mat-form-field>
+        <small *ngIf=" shipmentControl().sellerCountry.touched &&  shipmentControl().sellerCountry.errors " class="form-text text-danger">
+            Country is required.
+        </small>
+        <mat-selection-list formControlName="sellerCheckList">
+            <mat-list-option *ngFor="let list of checkList" [value]="list.name">
+                {{list.name}}
+            </mat-list-option>
+        </mat-selection-list>
+
+        <mat-form-field>
+            <mat-label>Choose a Selling date</mat-label>
+            <input matInput [matDatepicker]="sellerDate" formControlName="sellerDate">
+            <mat-datepicker-toggle matSuffix [for]="sellerDate"></mat-datepicker-toggle>
+            <mat-datepicker #sellerDate></mat-datepicker>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+    </div>
+</form>

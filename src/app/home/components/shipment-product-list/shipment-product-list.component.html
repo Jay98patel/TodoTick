@@ -1,0 +1,34 @@
+<div class="container">
+    <mat-table class=" mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="shipmentName">
+            <mat-header-cell *matHeaderCellDef>Shipment Name</mat-header-cell>
+            <mat-cell *matCellDef="let shipment">{{shipment.step1.shipmentName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="invoiceNo">
+            <mat-header-cell *matHeaderCellDef>Invoice No.</mat-header-cell>
+            <mat-cell *matCellDef="let shipment">{{shipment.step1.invoiceNo}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="buyersName">
+            <mat-header-cell *matHeaderCellDef>Buyer Name</mat-header-cell>
+            <mat-cell *matCellDef="let shipment">{{shipment.step2.buyersName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="buyerCountry">
+            <mat-header-cell *matHeaderCellDef>Buyer Country</mat-header-cell>
+            <mat-cell *matCellDef="let shipment">{{shipment.step2.buyerCountry}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sellerName">
+            <mat-header-cell *matHeaderCellDef>Seller Name</mat-header-cell>
+            <mat-cell class="description-cell" *matCellDef="let shipment">{{shipment.step3.sellerName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sellerContact">
+            <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+            <mat-cell *matCellDef="let shipment">{{shipment.step3.sellerContact}}</mat-cell>
+        </ng-container>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell text-danger" colspan="4">No Record Found"</td>
+        </tr>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['../editShipment',row.id]"></mat-row>
+    </mat-table>
+</div>
+<!-- (click)="shipmentDetails(row)" -->

@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr No.</th>
+            <th scope="col">Player ID</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Player Age</th>
+            <th scope="col">Player City</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="playersList">
+        <tr *ngFor="let player of playersList;let playerIndex=index">
+            <th>{{playerIndex+1}}</th>
+            <th>{{player.id}}</th>
+            <td>{{player.playerName}}</td>
+            <td>{{player.playerAge}}</td>
+            <td>{{player.playerCity}}</td>
+            <td class="fa fa-pencil-square-o" (click)="editPlayer(player)"></td>
+            <td class="fa fa-times" (click)="deletePlayer(player.id)"></td>
+        </tr>
+    </tbody>
+</table>

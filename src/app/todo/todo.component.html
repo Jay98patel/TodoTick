@@ -1,0 +1,12 @@
+<h4 class="text-center" *ngIf="allowUser">You can't access Todo App</h4>
+<div *ngIf="!allowUser" class="container d-flex mt-5">
+    <div class="col-6 ">
+        <h3>Form</h3>
+        <app-todo-form [todoEdit]="editTodo"></app-todo-form>
+        <button class="mt-3 btn btn-success">Show All Todos</button>
+    </div>
+    <div class="col-6 text-center">
+        <h3>Todo List</h3>
+        <app-todo-list [task]="todoLists"></app-todo-list>
+    </div>
+</div>

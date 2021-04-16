@@ -1,34 +1,565 @@
 {
   "todo": [
     {
+      "id": 7,
+      "title": "Todo",
+      "taskDetail": "wake at 12"
+    },
+    {
+      "id": 8,
+      "title": "p100",
+      "taskDetail": "go bring laptop"
+    },
+    {
+      "id": 9,
+      "title": "task2",
+      "taskDetail": "qwerty"
+    },
+    {
+      "id": 13,
+      "title": "sh",
+      "taskDetail": "hsh"
+    },
+    {
+      "id": 14,
+      "title": "jay",
+      "taskDetail": "patel"
+    }
+  ],
+  "users": [
+    {
       "id": 1,
-      "title": "Task one",
-      "taskDetail": "wake up at 6am"
+      "firstName": "Jay",
+      "userName": "itsjten",
+      "role": "Student",
+      "count": 100,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "google"
+        },
+        {
+          "workExp": "tcs"
+        }
+      ],
+      "jobRole": [
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": true,
+      "userDate": "2021-03-31"
     },
     {
       "id": 2,
-      "title": "Task two",
-      "taskDetail": "wake up at 6am"
+      "firstName": "j10",
+      "userName": "itjj",
+      "role": "Student",
+      "count": 10,
+      "status": "fresher",
+      "jobRole": [
+        "Software developer",
+        "Tester"
+      ],
+      "acceptTerms": true,
+      "userDate": "2021-03-18"
     },
     {
       "id": 3,
-      "title": "Task three",
-      "taskDetail": "wake up at 6am"
+      "firstName": "ay",
+      "userName": "pateh",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
     },
     {
       "id": 4,
-      "title": "jay",
-      "todoDetail": "ja"
+      "firstName": "aaay",
+      "userName": "lad",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
     },
     {
-      "id": 1615881005.954,
-      "title": "j",
-      "todoDetail": "y"
+      "id": 6,
+      "firstName": "fvbn",
+      "userName": "fvbnhgv",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
     },
     {
-      "id": 1615882426.737,
-      "title": "",
-      "todoDetail": ""
+      "id": 5,
+      "firstName": "ssas",
+      "userName": "dfdf",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 9,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 10,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 11,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 12,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 13,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    },
+    {
+      "id": 15,
+      "firstName": "hdf",
+      "userName": "lkjhg",
+      "role": "Employee",
+      "count": 9,
+      "status": "Expirenced",
+      "workExpiriences": [
+        {
+          "workExp": "jay"
+        },
+        {
+          "workExp": "patel"
+        },
+        {
+          "workExp": "hqwert"
+        },
+        {
+          "workExp": "sagdxu"
+        }
+      ],
+      "jobRole": [
+        "Web Developer",
+        "Software developer",
+        "Tester",
+        "Technical Support"
+      ],
+      "acceptTerms": false,
+      "userDate": "2021-03-24"
+    }
+  ],
+  "weather": [
+    {
+      "id": 1,
+      "cityName": "valsad",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 25,
+      "temparature": 30,
+      "humidity": 87,
+      "region": "Platues",
+      "regionFilter": "all"
+    },
+    {
+      "id": 2,
+      "cityName": "Vapi",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 20,
+      "temparature": 35,
+      "humidity": 90,
+      "region": "Platues",
+      "regionFilter": "all"
+    },
+    {
+      "id": 3,
+      "cityName": "Bhilad",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 15,
+      "temparature": 38,
+      "humidity": 87,
+      "region": "Valley",
+      "regionFilter": "all"
+    },
+    {
+      "id": 4,
+      "cityName": "Manhatton",
+      "State": "New York",
+      "country": "USA",
+      "windSpeed": 45,
+      "temparature": 3,
+      "humidity": 87,
+      "region": "Valley",
+      "regionFilter": "all"
+    },
+    {
+      "id": 5,
+      "cityName": "Pune",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 5,
+      "temparature": 28,
+      "humidity": 87,
+      "region": "LandForm",
+      "regionFilter": "all"
+    },
+    {
+      "id": 6,
+      "cityName": "Malad",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 15,
+      "temparature": 38,
+      "humidity": 97,
+      "region": "Mountain",
+      "regionFilter": "all"
+    },
+    {
+      "id": 7,
+      "cityName": "Borivali",
+      "State": "Gujarat",
+      "country": "India",
+      "windSpeed": 15,
+      "temparature": 38,
+      "humidity": 87,
+      "region": "LandForm",
+      "regionFilter": "all"
+    }
+  ],
+  "shipments": [
+    {
+      "step1": {
+        "shipmentName": "jay",
+        "invoiceNo": 0,
+        "orderNo": 2345678,
+        "trackingNo": "23456789",
+        "stock": "In Stock"
+      },
+      "step2": {
+        "buyersName": "Jay",
+        "buyersAddress": "kjhgv",
+        "buyersContact": 1234567890,
+        "buyerCountry": "India",
+        "buyersProduct": [
+          "LCD",
+          "Smart TV",
+          "Android TV"
+        ],
+        "buyerActive": false
+      },
+      "step3": {
+        "sellerName": "ad",
+        "sellerAddress": "ddd\nd\nd\nd",
+        "sellerContact": 12345,
+        "sellerCountry": "India",
+        "sellerDate": "2021-04-20T18:30:00.000Z",
+        "sellerCheckList": [
+          "Prepare Valuable",
+          "Preview other Listings",
+          "Discuss Clients gaols"
+        ]
+      },
+      "id": 12
+    },
+    {
+      "step1": {
+        "shipmentName": "jay patel",
+        "invoiceNo": 123456,
+        "orderNo": 9876543,
+        "trackingNo": "5678988",
+        "stock": "In Stock"
+      },
+      "step2": {
+        "buyersName": "test2",
+        "buyersAddress": "outook Micro ,silicon valley",
+        "buyersContact": 987654321,
+        "buyerCountry": "India",
+        "buyersProduct": [
+          "LCD",
+          "Smart TV"
+        ],
+        "buyerActive": true
+      },
+      "step3": {
+        "sellerName": "ad",
+        "sellerAddress": "fb,silicon valley ,califormnia",
+        "sellerContact": 12345,
+        "sellerCountry": "India",
+        "sellerDate": "2021-04-20T18:30:00.000Z",
+        "sellerCheckList": [
+          "Prepare Valuable",
+          "Discuss Timing and pricing"
+        ]
+      },
+      "id": 13
+    }
+  ],
+  "player": [
+    {
+      "id": 3,
+      "playerName": "Json Roy2",
+      "playerAge": 22,
+      "playerCity": "Delhi"
+    },
+    {
+      "id": 9,
+      "playerName": "jay",
+      "playerAge": 23,
+      "playerCity": "valsad"
+    },
+    {
+      "playerName": "test",
+      "playerAge": 23,
+      "playerCity": "city",
+      "id": 10
+    },
+    {
+      "playerName": "Rishab",
+      "playerAge": 222,
+      "playerCity": "Delhi",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "playerName": "Jay",
+      "playerAge": 42,
+      "playerCity": "Valsad"
+    },
+    {
+      "id": 13,
+      "playerName": "james",
+      "playerAge": 26,
+      "playerCity": "walter"
+    },
+    {
+      "id": 14,
+      "playerName": "walter",
+      "playerAge": 26,
+      "playerCity": "disney"
+    },
+    {
+      "id": 15,
+      "playerName": "john",
+      "playerAge": 30,
+      "playerCity": "vetinam"
     }
   ]
 }

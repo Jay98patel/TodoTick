@@ -1,0 +1,17 @@
+<form [formGroup]="playerForm" (ngSubmit)="playerUpdateButton == false ? savePlayer():updatePlayer()">
+    <div class="form-group">
+        <label for="title">Player Name</label>
+        <input type="text" formControlName="playerName" class="form-control" id="title" placeholder="Player Name">
+    </div>
+    <div class="form-group">
+        <label for="playerage">Player Age</label>
+        <input type="number" formControlName="playerAge" class="form-control" id="playerage" placeholder="Player Age">
+    </div>
+    <div class="form-group">
+        <label for="playercity">Player City</label>
+        <input type="text" formControlName="playerCity" class="form-control" id="playercity" placeholder="Player City">
+    </div>
+    <button type="submit" [loading]="loading" *ngIf="!playerUpdateButton" class="btn btn-primary">Submit</button>
+    <button type="submit" [loading]="loading" *ngIf="playerUpdateButton" class="btn btn-primary">Update</button>
+    <button type="button" *ngIf="playerUpdateButton" class="btn btn-warning ml-2" (click)="resetPlayerForm()">Cancel</button>
+</form>

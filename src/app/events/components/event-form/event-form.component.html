@@ -1,0 +1,11 @@
+<form [formGroup]="newEventForm" (ngSubmit)="submitEvent()">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" formControlName="eventName" class="form-control" id="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label for="taskdetail">Task Details</label>
+        <input type="text" formControlName="eventLocation" class="form-control" id="taskdetail" placeholder="Task Details">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -6,9 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: TodoComponent
-  }, {
-    path: 'todo', component: TodoComponent
-  },
+  }
 ];
 
 @NgModule({
