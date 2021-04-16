@@ -36,10 +36,14 @@ const routes: Routes = [
     loadChildren: () => import('./events/event.module').then(m => m.EventModule)
   },
   {
+    path: 'movie',
+    loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule)
+  },
+  {
     path: 'todo/:id/:role', component: TodoComponent
   },
-  { 
-    path: "**", component: PageNotFoundComponent 
+  {
+    path: "**", component: PageNotFoundComponent
   }
 ];
 

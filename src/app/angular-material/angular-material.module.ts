@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -33,7 +35,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatListModule
+    MatListModule,
+    MatSliderModule
   ],
 })
 export class AngularMaterialModule { }

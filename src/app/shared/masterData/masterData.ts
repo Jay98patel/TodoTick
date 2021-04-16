@@ -1,3 +1,4 @@
+
 export interface keyValuePair {
   id: number;
   name: string
@@ -17,6 +18,7 @@ export class masterData {
   buyers:keyValuePair[];
   product:keyValuePair[];
   checkList:keyValuePair[];
+  moviesName:keyValuePair[];
 
   public Role() {
     this.role = [{ id: 1, name: "Student" }, { id: 2, name: "Employee" }];
@@ -50,5 +52,10 @@ export class masterData {
   public CheckList() {
     this.checkList = [{ id: 1, name: "Prepare Valuable" }, { id: 2, name: "Preview other Listings" },{ id: 3, name: "Discuss Clients gaols" },{ id:4, name: "Discuss Timing and pricing" }];
     return this.checkList;
+  }
+
+  public MoviesName(){
+    this.moviesName = [{ id: 1, name: "Avengers EndGame" }, { id: 2, name: "Captain America" },{ id: 3, name: "Iron Man" },{ id:4, name: "Thor" }];
+    return this.moviesName;
   }
 }
