@@ -9,14 +9,10 @@ import { Router } from '@angular/router';
 })
 export class RatingsComponent implements OnInit {
   ratingForm;
-  constructor(private controlContainer:ControlContainer,private router: Router) { }
+  constructor(private controlContainer:ControlContainer) { }
 
   ngOnInit(): void {
     this.ratingForm=this.controlContainer.control;
-  }
-
-  loadNextStep(){
-    this.router.navigate(['movies/review']);  
   }
 
 }

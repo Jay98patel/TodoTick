@@ -2,6 +2,6 @@
     <form class="d-flex flex-column" [formGroup]="ratingForm">
         <mat-slider #mySlider formControlName="movieRatings" min="1" max="5">
         </mat-slider>
-        <button class="w-50" mat-raised-button color="primary" (click)="loadNextStep()">Next</button>
+        <button class="w-50" mat-raised-button color="primary" routerLink="/movie/review">Next</button>
     </form>
 </div>

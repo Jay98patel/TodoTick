@@ -1,17 +1,4 @@
-<div class="w-50 container">
-    <form class="d-flex flex-column" [formGroup]="movieForm">
-        <mat-form-field>
-            <mat-select formControlName="movieName" placeholder="Movie Name">
-                <mat-option *ngFor="let movieName of moviesName" [value]="movieName.name">
-                    {{movieName.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput [matDatepicker]="picker" formControlName="releaseDate" placeholder="Date of Release">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <button class="w-50" mat-raised-button color="primary" (click)="loadNextStep()">Next</button>
-    </form>
+<div class="container">
+    <h3>Control Container</h3>
+    <router-outlet></router-outlet>
 </div>

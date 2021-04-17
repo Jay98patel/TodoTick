@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MovieComponent } from './movie.component';
+import { MovieReviewFormComponent } from './movie-review-form/movie-review-form.component';
 import { RatingsComponent } from './ratings/ratings.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {
-    path: '', component:MovieComponent
+    path: '', component: MovieReviewFormComponent,
+    children: [
+      {
+        path:'',component:UserDetailComponent
+      },
+      {
+        path: 'movieDetails', component: UserDetailComponent
+      },
+      {
+        path: 'ratings', component: RatingsComponent
+      },
+      {
+        path: 'review', component: ReviewsComponent
+      }
+      ,
+    ]
   },
-  {
-    path:'ratings',component:RatingsComponent
-  },
-  {
-    path:'review',component:RatingsComponent
-  }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

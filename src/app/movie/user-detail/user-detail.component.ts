@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ControlContainer } from '@angular/forms';
+import { keyValuePair, masterData } from 'src/app/shared/masterData/masterData';
 
 @Component({
   selector: 'app-user-detail',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-
-  constructor() { }
+  moviesName: keyValuePair[];
+  movieForm;
+  constructor(private masterData: masterData,private controlContainer:ControlContainer) { }
 
   ngOnInit(): void {
+    this.moviesName = this.masterData.MoviesName();
+    this.movieForm=this.controlContainer.control;
   }
 
 }
