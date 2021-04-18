@@ -3,17 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { MovieReviewFormComponent } from './movie-review-form/movie-review-form.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 const routes: Routes = [
   {
     path: '', component: MovieReviewFormComponent,
     children: [
       {
-        path:'',component:UserDetailComponent
+        path:'',component:MovieDetailComponent
       },
       {
-        path: 'movieDetails', component: UserDetailComponent
+        path: 'movieDetails', component: MovieDetailComponent
       },
       {
         path: 'ratings', component: RatingsComponent
@@ -21,7 +21,6 @@ const routes: Routes = [
       {
         path: 'review', component: ReviewsComponent
       }
-      ,
     ]
   },
 ];

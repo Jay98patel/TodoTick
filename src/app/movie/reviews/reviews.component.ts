@@ -8,10 +8,13 @@ import { ControlContainer } from '@angular/forms';
 })
 export class ReviewsComponent implements OnInit {
   public movieForm;
+ 
   constructor(private controlContainer:ControlContainer) { }
 
   ngOnInit(): void {
     this.movieForm=this.controlContainer.control;
   }
+
+  
 
 }

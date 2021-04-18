@@ -1,0 +1,75 @@
+<form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="showMovieReviewInfo()">
+    <mat-form-field>
+        <input matInput formControlName="userName" placeholder="Your Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="userAge" placeholder="You Age">
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="warn" routerLink="../ratings">Back</button>
+        <button class="ml-3" type="submit" mat-raised-button color="primary">Submit</button>
+    </div>
+</form>
+
+<div *ngIf="showMovieReview">
+    <div>Your Name:
+        <span>
+            {{userForm.value.userName}}
+        </span>
+    </div>
+    <div>Your Age:
+        <span>
+            {{userForm.value.userAge}}
+        </span>
+    </div>
+    <div>Movie Name:
+        <span>
+            {{userForm.value.movieName}}
+        </span>
+    </div>
+    <div>Movie Dialogues:
+        <span>
+            {{userForm.value.movieDialogues}}
+        </span>
+    </div>
+    <div>Movie Favroite Scene:
+        <span>
+            {{userForm.value.movieFavoriteScene}}
+        </span>
+    </div>
+    <div>Actor's Acting :
+        <span>
+            {{userForm.value.movieActorsActing}}
+        </span>
+    </div>
+    <div>Movie Cinemetography:
+        <span>
+            {{userForm.value.movieCinemetography}}
+        </span>
+    </div>
+    <div>Movie Graphics:
+        <span>
+            {{userForm.value.movieGraphics}}
+        </span>
+    </div>
+    <div>MovieBest StoryLibe Ratings
+        <span>
+            {{userForm.value.movieStoryLine}}
+        </span>
+    </div>
+    <div>MovieBest Scene Ratings
+        <span>
+            {{userForm.value.movieScene}}
+        </span>
+    </div>
+    <div>MovieBest Review Ratings
+        <span>
+            {{userForm.value.movieReview}}
+        </span>
+    </div>
+    <div>MovieBest Release Date
+        <span>
+            {{userForm.value.releaseDate}}
+        </span>
+    </div>
+</div>

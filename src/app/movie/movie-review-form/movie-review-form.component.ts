@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-review-form',
@@ -19,10 +19,27 @@ export class MovieReviewFormComponent implements OnInit {
     this.movieForm = this.fb.group({
       movieName: [''],
       releaseDate: [''],
-      movieRatings: [''],
+      movieGraphics: [''],
+      movieStoryLine: [''],
+      movieActorsActing: [''],
+      movieCinemetography: [''],
+      movieScene:[''],
+      movieDialogues:[''],
       movieReview: [''],
-      movieFavoriteScene: ['']
+      movieFavoriteScene: [''],
+      userName:[''],
+      userAge:['']
     })
+  }
+
+  initializeMovieCast(){
+    return this.fb.group({
+     cast : [""],
+    });
+  }
+
+  movieCastArrayControl(){
+    return (this.movieForm.get('movieCast') as FormArray).controls;
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlContainer } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ratings',
@@ -9,10 +8,21 @@ import { Router } from '@angular/router';
 })
 export class RatingsComponent implements OnInit {
   ratingForm;
-  constructor(private controlContainer:ControlContainer) { }
+  detailReview: boolean=false;
+
+  constructor(private controlContainer: ControlContainer) { }
 
   ngOnInit(): void {
-    this.ratingForm=this.controlContainer.control;
+    console.log(this.controlContainer.value)
+    this.ratingForm = this.controlContainer.control;
   }
 
+  loadReviewInDetail(detailReviews) {
+    if(detailReviews.value == 1){
+      this.detailReview = true;
+    }
+    else{
+      this.detailReview=false
+    }
+  }
 }

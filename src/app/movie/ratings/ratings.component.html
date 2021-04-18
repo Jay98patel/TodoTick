@@ -1,7 +1,49 @@
-<div class="w-50 container">
-    <form class="d-flex flex-column" [formGroup]="ratingForm">
-        <mat-slider #mySlider formControlName="movieRatings" min="1" max="5">
-        </mat-slider>
-        <button class="w-50" mat-raised-button color="primary" routerLink="/movie/review">Next</button>
+<div class="container">
+    <form class="w-100 d-flex flex-column" [formGroup]="ratingForm">
+        <div class="review-detail-form">
+            <div>
+                <span>Movie Graphics</span>
+                <mat-slider #movieGraphics formControlName="movieGraphics" min="0" max="5">
+                </mat-slider>{{movieGraphics.value}}
+            </div>
+            <div>
+                <span>Movie StoryLine</span>
+                <mat-slider #movieStoryLine formControlName="movieStoryLine" min="0" max="5">
+                </mat-slider>{{movieStoryLine.value}}
+            </div>
+            <div>
+                <span>Actors Acting</span>
+                <mat-slider #movieActorsActing formControlName="movieActorsActing" min="0" max="5">
+                </mat-slider>{{movieActorsActing.value}}
+            </div>
+            <div>
+                <span>Cinemetography</span>
+                <mat-slider #movieCinemetography formControlName="movieCinemetography" min="0" max="5">
+                </mat-slider>{{movieCinemetography.value}}
+            </div>
+            <div>
+                <div class="pt-0">What to Review Movie in Detail ?</div>
+                <mat-radio-group (change)="loadReviewInDetail($event)">
+                    <mat-radio-button value="1">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="review-detail-form" *ngIf="detailReview">
+            <div>
+                <span>Movie Scenes</span>
+                <mat-slider #movieScene formControlName="movieScene" min="1" max="5">
+                </mat-slider>{{movieScene.value}}
+            </div>
+            <div>
+                <span>Movie Dialogues</span>
+                <mat-slider #movieDialogues formControlName="movieDialogues" min="1" max="5">
+                </mat-slider>{{movieDialogues.value}}
+            </div>
+        </div>
+        <div class="d-flex">
+            <button mat-raised-button color="warn" routerLink="/movie">Back</button>
+            <button mat-raised-button class="ml-3" color="primary" routerLink="../review">Next</button>
+        </div>
     </form>
 </div>
