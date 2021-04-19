@@ -13,10 +13,13 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm=this.controlContainer.control;
+    console.log(this.userForm)
   }
 
   showMovieReviewInfo(){
-    this.showMovieReview=true;
+    if(this.userForm.valid){
+      this.showMovieReview=true;
+    }
   }
 
 }

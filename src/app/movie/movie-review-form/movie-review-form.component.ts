@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-review-form',
@@ -27,7 +27,7 @@ export class MovieReviewFormComponent implements OnInit {
       movieDialogues:[''],
       movieReview: [''],
       movieFavoriteScene: [''],
-      userName:[''],
+      userName:['',[Validators.required]],
       userAge:['']
     })
   }

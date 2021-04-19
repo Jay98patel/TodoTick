@@ -22,7 +22,6 @@ export class UserFormComponent implements OnInit {
   @Output() saveUsers = new EventEmitter<User>();
 
   constructor(public fb: FormBuilder, public roles: masterData, private route: Router) {
-    // console.log(this.route.getCurrentNavigation().extras.state as User)
   }
 
   ngOnInit() {
