@@ -19,7 +19,6 @@ import { LifeCycleHookComponent } from './life-cycle-hook/life-cycle-hook.compon
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    LifeCycleHookComponent,
   ],
   imports: [
     BrowserModule,
