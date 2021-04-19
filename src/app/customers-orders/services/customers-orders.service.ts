@@ -10,4 +10,12 @@ export class CustomersOrdersService {
   getOrders():CustomerOrders[]{
     return this.customerDetail.customerOrderDetails;
   }
+
+  confirmOrder(order:CustomerOrders){
+    return this.customerDetail.customersConfirmOrders.push(order);
+  }
+
+  getConfirmOrders():CustomerOrders[]{
+    return this.customerDetail.customersConfirmOrders;
+  }
 }

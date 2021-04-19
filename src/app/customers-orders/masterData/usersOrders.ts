@@ -8,4 +8,6 @@ export class CustomersOrder{
       {id:4,name:"John",productName:"MOTOROLA"},
       {id:5,name:"Sam",productName:"IPhone"},
     ]
+
+    public customersConfirmOrders:CustomerOrders[]=[];
 }

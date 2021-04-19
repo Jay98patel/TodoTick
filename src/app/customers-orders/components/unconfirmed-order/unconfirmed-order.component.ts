@@ -20,4 +20,8 @@ export class UnconfirmedOrderComponent implements OnInit {
     this.customersOrders=this.customerOrderService.getOrders();
   }
 
+  confirmOrder(id:number){
+    
+  }
+
 }
