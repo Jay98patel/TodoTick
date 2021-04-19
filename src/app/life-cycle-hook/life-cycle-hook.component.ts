@@ -7,13 +7,13 @@ import { ParentComponent } from './components/parent/parent.component';
   styleUrls: ['./life-cycle-hook.component.scss']
 })
 export class LifeCycleHookComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-  title: string = "This is LifeCycle Hook Example";
-  secondaryTitle: string = "this is Secondary Title";
-  thirdTitle:string="this is third Title";
-
   @ViewChild(ParentComponent, { static: false }) parentComponent: ParentComponent;
   @ViewChild('secondTitle', { static: false }) toggleTitleText: ElementRef<HTMLElement>;
   @ViewChild('thirdTitle', { static: true }) toggleThirdTitleText: ElementRef<HTMLElement>;
+
+  title: string = "This is LifeCycle Hook Example";
+  secondaryTitle: string = "this is Secondary Title";
+  thirdTitle:string="this is third Title";
 
   constructor() {
     console.log('%c Grand-Parent-component: Constructor ', 'background: #0000FF; color: #fff');

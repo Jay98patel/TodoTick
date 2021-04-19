@@ -44,6 +44,10 @@ const routes: Routes = [
     loadChildren: () => import('./life-cycle-hook/life-cycle-hook.module').then(m => m.LifeCycleHookModule)
   },
   {
+    path: 'customersOrders',
+    loadChildren: () => import('./customers-orders/customers-orders.module').then(m => m.CustomersOrdersModule)
+  },
+  {
     path: 'todo/:id/:role', component: TodoComponent
   },
   {
