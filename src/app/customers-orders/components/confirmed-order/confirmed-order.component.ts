@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CustomersOrder } from '../../masterData/usersOrders';
-import { CustomersOrdersService } from '../../services/customers-orders.service';
 
 @Component({
   selector: 'app-confirmed-order',

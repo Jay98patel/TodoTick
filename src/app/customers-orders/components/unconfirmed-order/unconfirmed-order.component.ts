@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CustomerOrders } from '../../customers-order.model';
-import { CustomersOrder } from '../../masterData/usersOrders';
 import { CustomersOrdersService } from '../../services/customers-orders.service';
 
 @Component({
