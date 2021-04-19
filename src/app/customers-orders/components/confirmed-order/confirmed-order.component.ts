@@ -8,7 +8,7 @@ import { CustomersOrdersService } from '../../services/customers-orders.service'
   styleUrls: ['./confirmed-order.component.scss']
 })
 export class ConfirmedOrderComponent implements OnInit {
-  @Input() confirmOrders:CustomersOrder[]
+  @Input() confirmOrders:CustomersOrder[];
 
   constructor() { }
 

@@ -12,7 +12,7 @@ export class CustomersOrdersComponent implements OnInit {
   constructor(private customerOrderService:CustomersOrdersService) { }
 
   ngOnInit(): void {
-    this.getConfirmOrders()
+    this.getConfirmOrders();
   }
 
   confirmOrder(order:CustomerOrders){
