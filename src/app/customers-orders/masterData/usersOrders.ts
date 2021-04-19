@@ -9,5 +9,7 @@ export class CustomersOrder{
       {id:5,name:"Sam",productName:"IPhone"},
     ]
 
-    public customersConfirmOrders:CustomerOrders[]=[];
+    public customersConfirmOrders:CustomerOrders[]=[
+      {id:6,name:"James",productName:"Shoes"},
+    ];
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CustomerOrders } from '../../customers-order.model';
+import { CustomersOrder } from '../../masterData/usersOrders';
 import { CustomersOrdersService } from '../../services/customers-orders.service';
 
 @Component({
@@ -8,6 +9,9 @@ import { CustomersOrdersService } from '../../services/customers-orders.service'
   styleUrls: ['./unconfirmed-order.component.scss']
 })
 export class UnconfirmedOrderComponent implements OnInit {
+
+  @Output() unconfirmedOrder= new EventEmitter<CustomerOrders>(); 
+
   customersOrders:CustomerOrders[];
 
   constructor(private customerOrderService:CustomersOrdersService) { }
@@ -20,8 +24,8 @@ export class UnconfirmedOrderComponent implements OnInit {
     this.customersOrders=this.customerOrderService.getOrders();
   }
 
-  confirmOrder(id:number){
-    
+  confirmOrder(order:CustomerOrders,index:number){
+    this.unconfirmedOrder.emit(order);
+    this.customersOrders.splice(index,1);
   }
-
 }

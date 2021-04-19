@@ -1,10 +1,10 @@
 <ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between" *ngFor="let customerOrder of customersOrders">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let customerOrder of customersOrders;let i=index">
         <div>
             {{customerOrder.name}}
         </div>
         <div>
-            <i class="fa fa-arrow-circle-right" (click)="confirmOrder(customerOrder.id)"></i>
+            <i class="fa fa-arrow-circle-right" (click)="confirmOrder(customerOrder,i)"></i>
         </div>
     </li>
 </ul>

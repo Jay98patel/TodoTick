@@ -12,7 +12,7 @@ export class CustomersOrdersService {
   }
 
   confirmOrder(order:CustomerOrders){
-    return this.customerDetail.customersConfirmOrders.push(order);
+     this.customerDetail.customersConfirmOrders.push(order);
   }
 
   getConfirmOrders():CustomerOrders[]{

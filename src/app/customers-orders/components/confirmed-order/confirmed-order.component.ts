@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CustomerOrders } from '../../customers-order.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { CustomersOrder } from '../../masterData/usersOrders';
 import { CustomersOrdersService } from '../../services/customers-orders.service';
 
 @Component({
@@ -8,14 +8,10 @@ import { CustomersOrdersService } from '../../services/customers-orders.service'
   styleUrls: ['./confirmed-order.component.scss']
 })
 export class ConfirmedOrderComponent implements OnInit {
-  confirmOrders:CustomerOrders[];
+  @Input() confirmOrders:CustomersOrder[]
 
-  constructor(private customerOrderService:CustomersOrdersService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getConfirmOrders(){
-    this.confirmOrders=this.customerOrderService.getConfirmOrders();
   }
 }
