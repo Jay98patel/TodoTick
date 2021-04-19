@@ -1,3 +1,14 @@
-<div class="d-flex">
-    <app-parent></app-parent>
+<div class="container d-flex flex-column">
+    <h3>{{title}}</h3>
+    <h4 #secondTitle>{{secondaryTitle}}</h4>
+     <h5 #thirdTitle>{{thirdTitle}}</h5>
+    <div class="mt-3">
+        <button class="btn btn-success" (click)="toggleTitle()">Change Title</button>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-warning" (click)="changeTitle()">Change 2nd Title (Using View Child)</button>
+    </div>
+    <app-parent class="mt-3">
+        <app-child [valueFromParent]="title"></app-child>
+    </app-parent>
 </div>
