@@ -5,6 +5,8 @@ import { CustomersOrdersRoutingModule } from './customers-orders-routing.module'
 import { UnconfirmedOrderComponent } from './components/unconfirmed-order/unconfirmed-order.component';
 import { ConfirmedOrderComponent } from './components/confirmed-order/confirmed-order.component';
 import { CustomersOrdersComponent } from './customers-orders.component';
+import { CustomersOrdersService } from './services/customers-orders.service';
+import { CustomersOrder } from './masterData/usersOrders';
 
 
 @NgModule({
@@ -12,6 +14,7 @@ import { CustomersOrdersComponent } from './customers-orders.component';
   imports: [
     CommonModule,
     CustomersOrdersRoutingModule
-  ]
+  ],
+  providers:[CustomersOrdersService,CustomersOrder]
 })
 export class CustomersOrdersModule { }
