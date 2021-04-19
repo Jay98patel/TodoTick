@@ -12,12 +12,14 @@ import { NotifierModule } from 'angular-notifier';
 import { customNotifierOptions } from './shared/notifier';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { TodoTickButtonModule } from './shared Module/todo-tick-button/todo-tick-button.module';
+import { LifeCycleHookComponent } from './life-cycle-hook/life-cycle-hook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    LifeCycleHookComponent,
   ],
   imports: [
     BrowserModule,

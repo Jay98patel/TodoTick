@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule)
   },
   {
+    path: 'lifeCycleHook',
+    loadChildren: () => import('./life-cycle-hook/life-cycle-hook.module').then(m => m.LifeCycleHookModule)
+  },
+  {
     path: 'todo/:id/:role', component: TodoComponent
   },
   {
